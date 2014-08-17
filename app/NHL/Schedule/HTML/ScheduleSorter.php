@@ -38,15 +38,6 @@ class ScheduleSorter implements ScheduleImporterInterface {
     }
 
     /**
-     * Get the UID of the next game.
-     * @return string
-     */
-    public function getNextGame()
-    {
-        return $this->nextGame;
-    }
-
-    /**
      * @param  array $match
      * @param  string $key
      * @return void
@@ -57,7 +48,8 @@ class ScheduleSorter implements ScheduleImporterInterface {
 
         if ($match['date'] > $this->config->get('nhl.currentDateTime') && $this->nextGame === false)
         {
-            $this->nextGame = $match['uid'];
+            $this->nextGame = true;
+            $match['nextGame'] = true;
         }
 
         $this->sortedSchedule[$month][] = $match;

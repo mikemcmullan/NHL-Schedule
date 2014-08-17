@@ -26,7 +26,6 @@ class ScheduleController extends BaseController {
 
         return View::make('schedule.index')
             ->with('schedule', $sortedSchedule)
-            ->with('nextGame', $this->scheduleImporter->getNextGame())
             ->with('teamName', Config::get("nhl.teams.{$team}"));
     }
 
