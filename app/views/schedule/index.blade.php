@@ -17,7 +17,7 @@
                 <td data-month="{{ head($matchGroup)['date']->format('Y-m') }}" colspan="5" class="month-sep">{{ $month }}</td>
             </tr>
                 @foreach ($matchGroup as $match)
-            <tr data-month="{{ $match['date']->format('Y-m') }}" class="{{ $nextGame === $match['uid'] ? 'next-game ' : '' }}{{ isCollapsed($match) ? 'collapsed' : '' }}">
+            <tr data-month="{{ $match['date']->format('Y-m') }}" class="{{ isset($match['nextGame']) ? 'next-game ' : '' }}{{ isCollapsed($match) ? 'collapsed' : '' }}">
                 <td>{{ $match['date']->format('D\, M jS\, Y') }}</td>
                 <td>{{ $match['away'] }}</td>
                 <td>{{ $match['home'] }}</td>
@@ -29,11 +29,11 @@
         </tbody>
         <tfoot>
             <tr>
-                <td>Date</td>
-                <td>Visitor</td>
-                <td>Home</td>
-                <td>Time</td>
-                <td>TV Networks</td>
+                <th>Date</th>
+                <th>Visitor</th>
+                <th>Home</th>
+                <th>Time</th>
+                <th>TV Networks</th>
             </tr>
         </tfoot>
     </table>
