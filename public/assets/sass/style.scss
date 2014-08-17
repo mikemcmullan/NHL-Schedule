@@ -76,17 +76,32 @@ table {
     }
 
     th {
-        padding:21px 25px 22px 25px;
-        border-top:1px solid #fafafa;
-        border-bottom:1px solid #e0e0e0;
+        padding: 15px 20px 16px 20px;
+        border-top: 1px solid #fafafa;
+        border-bottom: 1px solid #e0e0e0;
 
-        background: #ededed;
-        background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
-        background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+        background: #fafafa;
 
         &:first-child {
             text-align: left;
-            padding-left:20px;
+            padding-left: 20px;
+            width: 25%;
+        }
+
+        &:nth-child(2) {
+            width: 18%;
+        }
+
+        &:nth-child(3) {
+            width: 18%;
+        }
+
+        &:nth-child(4) {
+            width: 9%;
+        }
+
+        &:last-child {
+            width: 30%;
         }
     }
 
@@ -95,14 +110,10 @@ table {
 
         &:first-child {
             th:first-child {
-                -moz-border-radius-topleft:3px;
-                -webkit-border-top-left-radius:3px;
                 border-top-left-radius:3px;
             }
 
             th:last-child {
-                -moz-border-radius-topright:3px;
-                -webkit-border-top-right-radius:3px;
                 border-top-right-radius:3px;
             }
         }
@@ -125,14 +136,10 @@ table {
 
         &.even td {
             background: #f6f6f6;
-            background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
-            background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
         }
 
         &:hover td {
             background: #f2f2f2;
-            background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-            background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);  
         }
 
         &.next-game td {
@@ -149,8 +156,6 @@ table {
         // border-left: 1px solid #e0e0e0;
 
         background: #fafafa;
-        background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
-        background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
 
         &.month-sep {
             border-top: none;

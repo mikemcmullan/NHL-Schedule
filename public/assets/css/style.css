@@ -54,28 +54,35 @@ table a:active, table a:hover {
   text-decoration: underline;
 }
 table th {
-  padding: 21px 25px 22px 25px;
+  padding: 15px 20px 16px 20px;
   border-top: 1px solid #fafafa;
   border-bottom: 1px solid #e0e0e0;
-  background: #ededed;
-  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
-  background: -moz-linear-gradient(top, #ededed, #ebebeb);
+  background: #fafafa;
 }
 table th:first-child {
   text-align: left;
   padding-left: 20px;
+  width: 25%;
+}
+table th:nth-child(2) {
+  width: 18%;
+}
+table th:nth-child(3) {
+  width: 18%;
+}
+table th:nth-child(4) {
+  width: 9%;
+}
+table th:last-child {
+  width: 30%;
 }
 table tr {
   text-align: center;
 }
 table tr:first-child th:first-child {
-  -moz-border-radius-topleft: 3px;
-  -webkit-border-top-left-radius: 3px;
   border-top-left-radius: 3px;
 }
 table tr:first-child th:last-child {
-  -moz-border-radius-topright: 3px;
-  -webkit-border-top-right-radius: 3px;
   border-top-right-radius: 3px;
 }
 table tr:last-child td {
@@ -92,13 +99,9 @@ table tr.collapsed {
 }
 table tr.even td {
   background: #f6f6f6;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
-  background: -moz-linear-gradient(top, #f8f8f8, #f6f6f6);
 }
 table tr:hover td {
   background: #f2f2f2;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
-  background: -moz-linear-gradient(top, #f2f2f2, #f0f0f0);
 }
 table tr.next-game td {
   background: #024590;
@@ -108,8 +111,6 @@ table tr.next-game td {
 table td {
   padding: 13px 5px;
   background: #fafafa;
-  background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
-  background: -moz-linear-gradient(top, #fbfbfb, #fafafa);
 }
 table td.month-sep {
   border-top: none;

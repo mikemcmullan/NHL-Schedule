@@ -4,11 +4,11 @@
 <table>
         <thead>
             <tr>
-                <td>Date</td>
-                <td>Visitor</td>
-                <td>Home</td>
-                <td>Time</td>
-                <td>TV Networks \ Results</td>
+                <th>Date</th>
+                <th>Visitor</th>
+                <th>Home</th>
+                <th>Time</th>
+                <th>TV Networks \ Results</th>
             </tr>
         </thead>
         <tbody>
