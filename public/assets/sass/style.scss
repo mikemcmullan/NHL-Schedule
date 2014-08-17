@@ -1,0 +1,177 @@
+$colourBase: #013875;
+$colourOne: #0557B3;
+$colourTwo: #024590;
+$colourThree: #013875;
+$colourFour: #012A59;
+$colourFive: #001A37;
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    background: $colourBase;
+}
+
+.page-wrap {
+    margin: 0 auto 10px;
+    padding: 0 10px;
+
+    @media (min-width: 800px) {
+        width: 800px;
+    }
+}
+
+
+header {
+
+    h1 {
+        color: white;
+        text-align: center;
+        text-shadow: 1px 1px 0px #ababab, 
+                    2px 2px 0px #919191, 
+                    3px 3px 0px #919191, 
+                    4px 4px 3px #000;
+    }
+
+    nav {
+        margin-bottom: 15px;
+        text-align: center;
+
+        a {
+            color: #fff;
+        }
+    }
+}
+
+table {
+    color:#666;
+    font-size:12px;
+    text-shadow: 1px 1px 0px #fff;
+    background:#eaebec;
+    // border:#ccc 1px solid;
+    width: 100%;
+
+    // border-radius:3px;
+    box-shadow: 0 0 6px 1px #181818;
+
+    a {
+        color: #666;
+        font-weight: bold;
+        text-decoration:none;
+
+        &:visited {
+            color: #999999;
+            font-weight:bold;
+            text-decoration:none;
+        }
+
+        &:active,
+        &:hover {
+            color: #bd5a35;
+            text-decoration:underline;
+        }
+    }
+
+    th {
+        padding:21px 25px 22px 25px;
+        border-top:1px solid #fafafa;
+        border-bottom:1px solid #e0e0e0;
+
+        background: #ededed;
+        background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+        background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+
+        &:first-child {
+            text-align: left;
+            padding-left:20px;
+        }
+    }
+
+    tr {
+        text-align: center;
+
+        &:first-child {
+            th:first-child {
+                -moz-border-radius-topleft:3px;
+                -webkit-border-top-left-radius:3px;
+                border-top-left-radius:3px;
+            }
+
+            th:last-child {
+                -moz-border-radius-topright:3px;
+                -webkit-border-top-right-radius:3px;
+                border-top-right-radius:3px;
+            }
+        }
+
+        &:last-child td {
+            border-bottom:0;
+
+            &:first-child {
+                border-bottom-left-radius:3px;
+            }
+
+            &:last-child {
+                border-bottom-right-radius:3px;
+            }
+        }
+
+        &.collapsed {
+            display: none;
+        }
+
+        &.even td {
+            background: #f6f6f6;
+            background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+            background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+        }
+
+        &:hover td {
+            background: #f2f2f2;
+            background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+            background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);  
+        }
+
+        &.next-game td {
+            background: $colourTwo; 
+            text-shadow: 1px 1px 0px #343434;
+            color: white;
+        }
+    }
+
+    td {
+        padding: 13px 5px;
+        // border-top: 1px solid #ffffff;
+        // border-bottom:1px solid #e0e0e0;
+        // border-left: 1px solid #e0e0e0;
+
+        background: #fafafa;
+        background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+        background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+
+        &.month-sep {
+            border-top: none;
+            border-bottom: none;
+            background: $colourFour;
+            text-shadow: none;
+            color: #f1f1f1;
+            padding: 15px 0;
+            font-weight: bold;
+            font-size: 130%;
+            cursor: pointer;
+
+            &:hover {
+                background: darken($colourFour, 5%);
+            }
+        }
+    
+        &:first-child {
+            text-align: left;
+            padding-left:20px;
+            border-left: 0;
+        }
+    }
+}
