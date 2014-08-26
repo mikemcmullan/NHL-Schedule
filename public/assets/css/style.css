@@ -5,6 +5,7 @@
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 14px;
   background: #013875;
 }
 
@@ -18,7 +19,15 @@ body {
   }
 }
 
-header h1 {
+a {
+  color: #428BCA;
+}
+a:hover, a:active {
+  color: #2A6496;
+}
+
+header h1,
+header h2 {
   color: white;
   text-align: center;
   text-shadow: 1px 1px 0px #ababab,  2px 2px 0px #919191,  3px 3px 0px #919191,  4px 4px 3px #000;
@@ -33,7 +42,6 @@ header nav a {
 
 table {
   color: #666;
-  font-size: 12px;
   text-shadow: 1px 1px 0px #fff;
   background: #eaebec;
   width: 100%;
@@ -130,4 +138,30 @@ table td:first-child {
   text-align: left;
   padding-left: 20px;
   border-left: 0;
+}
+
+.team-select {
+  background: #FFF;
+  box-shadow: 0px 0px 6px 1px #181818;
+  padding: 0px;
+  margin: 0px auto;
+  overflow: hidden;
+}
+.team-select li {
+  list-style: none;
+  float: left;
+  width: 50%;
+}
+.team-select li:nth-child(odd) a {
+  border-right: 2px #EAEBEC solid;
+}
+.team-select li a {
+  display: inline-block;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px #EAEBEC solid;
+}
+.team-select li a:hover {
+  background: #f2f2f2;
 }

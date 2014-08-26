@@ -1,6 +1,14 @@
-@extends('layouts.master', ['teamName', $teamName])
+@extends('layouts.master')
+
+@section('pageTitle')
+NHL {{ $teamName }} Schedule - NHL Schedule Viewer
+@stop
 
 @section('content')
+<header>
+    <h1>{{ $teamName }} Schedule</h1>
+</header>
+
 <table>
         <thead>
             <tr>
