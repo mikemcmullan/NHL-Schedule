@@ -13,25 +13,15 @@
 
 Route::get('/', [
     'as'    => 'home_path',
-    'uses'  => 'ScheduleController@schedule'
+    'uses'  => 'TeamController@schedule'
 ]);
 
-Route::get('/schedule/{team}', [
-    'as'    => 'schedule_path',
-    'uses'  => 'ScheduleController@schedule'
+Route::get('/team/{id}', [
+    'as'    => 'team_path',
+    'uses'  => 'TeamController@team'
 ]);
 
-// function()
-// {
-// 	$lexer = App::make('CSVLexer');
-//     $interpreter = App::make('CSVInterpreter');
-
-//     $interpreter->addObserver(function(array $row) //use (&$matches, &$columnNames, &$index) 
-//     {
-//         echo '<pre>';
-//         print_r($row);
-//         echo '</pre>';
-//     });
-
-//     $lexer->parse('/Users/mike/Hive/projects/leafs/full.csv', $interpreter);
-// });
+Route::get('/team/{id}/schedule', [
+    'as'    => 'team_schedule_path',
+    'uses'  => 'TeamController@schedule'
+]);

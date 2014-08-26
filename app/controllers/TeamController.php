@@ -4,7 +4,7 @@ use NHL\Schedule\ScheduleImporter;
 use NHL\Exceptions\NonExistentTeamException;
 use Carbon\Carbon;
 
-class ScheduleController extends BaseController {
+class TeamController extends BaseController {
 
     private $scheduleImporter;
 
@@ -13,11 +13,16 @@ class ScheduleController extends BaseController {
         $this->scheduleImporter = $scheduleImporter;
     }
 
-    public function schedule($team = 'TOR')
+    public function team($id = 'TOR')
     {   
+        return Redirect::route('team_schedule_path', [$id]);
+    }
+
+    public function schedule($id = 'TOR')
+    {
         try
         {
-            $sortedSchedule = $this->scheduleImporter->run($team);
+            $sortedSchedule = $this->scheduleImporter->run($id);
         } 
         catch (NonExistentTeamException $e) 
         {
@@ -26,7 +31,7 @@ class ScheduleController extends BaseController {
 
         return View::make('schedule.index')
             ->with('schedule', $sortedSchedule)
-            ->with('teamName', Config::get("nhl.teams.{$team}"));
+            ->with('teamName', Config::get("nhl.teams.{$id}"));
     }
 
 }
