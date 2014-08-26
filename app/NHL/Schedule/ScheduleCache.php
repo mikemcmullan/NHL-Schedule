@@ -49,13 +49,13 @@ class ScheduleCache implements ScheduleImporterInterface {
      * @param  string $team
      * @return 
      */
-    public function run($team = 'TOR')
+    public function run($teamId)
     {
-        $key = $this->createCacheKey("nhl.schedule.{$team}");
+        $key = $this->createCacheKey("nhl.schedule.{$teamId}");
 
         if ( ! $this->cache->has($key))
         {
-            $body = $this->scheduleImporter->run($team);
+            $body = $this->scheduleImporter->run($teamId);
 
             $this->cache->put($key, $body, $this->config->get('nhl.scheduleCacheLength'));
 

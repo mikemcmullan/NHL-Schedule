@@ -4,6 +4,6 @@ namespace NHL\Schedule;
 
 interface ScheduleImporter {
 
-    public function run($team = 'TOR');
+    public function run($teamId);
 
 }

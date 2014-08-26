@@ -78,12 +78,10 @@ class ScheduleFilter implements ScheduleImporterInterface {
      * 
      * @return array
      */
-    public function run($team = 'TOR')
+    public function run($teamId)
     {
-        $schedule = $this->scheduleImporter->run($team);
+        $schedule = $this->scheduleImporter->run($teamId);
 
-        // return $schedule->toArray();
-        // return array_filter(array_map([$this, 'mapMatches'], $schedule->toArray()));
         return array_filter(array_map([$this, 'mapMatches'], $schedule));
     }
 

@@ -85,7 +85,7 @@ class ScheduleFilter implements ScheduleImporterInterface {
      * 
      * @return array
      */
-    public function run($team = 'TOR')
+    public function run($team)
     {
         $schedule = $this->scheduleImporter->run();
 

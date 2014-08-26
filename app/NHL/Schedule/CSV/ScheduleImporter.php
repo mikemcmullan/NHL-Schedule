@@ -94,7 +94,7 @@ class ScheduleImporter implements ScheduleImporterInterface {
     /**
      * Run the import.
      */
-    public function run($team = 'TOR')
+    public function run($team)
     {
         // Download the schedule and return it as a string.
         $csvString = $this->scheduleDownloader->get('http://mapleleafs.nhl.com/schedule/full.csv');

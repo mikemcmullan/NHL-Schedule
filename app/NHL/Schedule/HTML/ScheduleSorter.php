@@ -76,9 +76,9 @@ class ScheduleSorter implements ScheduleImporterInterface {
      * 
      * @return array
      */
-    public function run($team = 'TOR')
+    public function run($teamId)
     {
-        $schedule = $this->scheduleFilter->run($team);
+        $schedule = $this->scheduleFilter->run($teamId);
 
         array_walk($schedule, [$this, 'walkSchedule']);
 

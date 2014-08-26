@@ -41,16 +41,16 @@ class ScheduleImporter implements ScheduleImporterInterface {
     /**
      * Run the import.
      */
-    public function run($team = 'TOR')
+    public function run($teamId)
     {
         // Make sure the team exists.
-        if ( ! $this->config->has("nhl.teams.{$team}"))
+        if ( ! $this->config->has("nhl.teams.{$teamId}"))
         {
             throw new NonExistentTeamException;
         }
 
         // Download the schedule and return it as a string.
-        $htmlString = $this->scheduleDownloader->get(sprintf($this->config->get('nhl.htmlSeasonScheduleUrl'), $team));
+        $htmlString = $this->scheduleDownloader->get(sprintf($this->config->get('nhl.htmlSeasonScheduleUrl'), $teamId));
 
         // Parse the html.
         $dom = HtmlDomParser::str_get_html($htmlString);
