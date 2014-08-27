@@ -1,13 +1,12 @@
 @extends('layouts.master')
 
 @section('pageTitle')
-Select Your Team - NHL Schedule Viewer
+Select Your Team &#8250; 2014 - 2015 NHL Schedule Viewer
 @stop
 
 @section('content')
 <header>
-    <h1>NHL Schedule Viewer</h1>
-    <h2>Select Your Team</h2>
+    <h1>2014 - 2015 NHL Schedule Viewer</h1>
 </header>
 
 @foreach ($devisions as $conference => $devision)
