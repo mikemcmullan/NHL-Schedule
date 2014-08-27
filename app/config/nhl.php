@@ -73,6 +73,22 @@ return [
         'VAN' => 'Vancouver Canucks',
         'WSH' => 'Washington Capitals',
         'WPG' => 'Winnipeg Jets'
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | List of Devisions & Which Teams Belong to Each Devision.
+    |--------------------------------------------------------------------------
+    */
+    'devisions' => [
+        'eastern' => [
+            'metropolitan' => ['CAR', 'CBJ', 'NJD', 'NYI', 'NYR', 'PHI', 'PIT', 'WSH'],
+            'atlantic' => ['BOS', 'BUF', 'DET', 'FLA', 'MTL', 'OTT', 'TBL', 'TOR']
+        ],
+        'western' => [
+            'pacific' => ['ANA', 'CGY', 'EDM', 'LAK', 'ARI', 'SJS', 'VAN'],
+            'central' => ['CHI', 'COL', 'DAL', 'MIN', 'NSH', 'STL', 'WPG']
+        ]
     ]
 
 ];
