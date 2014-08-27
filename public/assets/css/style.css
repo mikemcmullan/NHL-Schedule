@@ -141,27 +141,27 @@ table td:first-child {
 }
 
 .team-select {
-  background: #FFF;
-  box-shadow: 0px 0px 6px 1px #181818;
-  padding: 0px;
-  margin: 0px auto;
   overflow: hidden;
+  background: #fff;
+  box-shadow: 0px 0px 6px 1px #181818;
 }
-.team-select li {
-  list-style: none;
-  float: left;
-  width: 50%;
+.team-select .team-group {
+  display: flex;
 }
-.team-select li:nth-child(odd) a {
-  border-right: 2px #EAEBEC solid;
+.team-select .team-group .team {
+  flex: 1 50%;
+  justify-content: center;
 }
-.team-select li a {
+.team-select .team-group .team a {
   display: inline-block;
-  padding: 20px;
+  padding: 20px 10px;
   width: 100%;
   text-align: center;
   border-bottom: 2px #EAEBEC solid;
 }
-.team-select li a:hover {
+.team-select .team-group .team a:hover {
   background: #f2f2f2;
+}
+.team-select .team-group .team a:first-child {
+  border-right: 2px #EAEBEC solid;
 }

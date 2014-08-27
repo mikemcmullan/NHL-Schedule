@@ -3,7 +3,8 @@
 Route::get('/', ['as' => 'home_path', function() 
 {
     $teams = Config::get('nhl.teams');
-
+    $teams = array_chunk($teams, 2, true);
+    
     return View::make('home')->withTeams($teams);
 }]);
 
