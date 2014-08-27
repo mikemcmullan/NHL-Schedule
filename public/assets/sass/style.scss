@@ -215,6 +215,14 @@ table {
         }      
     }
 
+    &.eastern-conference .devisions-container .devision-header {
+        background: #c41230;
+    }
+
+    &.western-conference .devisions-container .devision-header {
+        background: #003e7e;
+    }
+
     .devisions-container {
         width: 50%;
         float: left;
@@ -224,7 +232,6 @@ table {
         }
 
         .devision-header {
-            background: $colourFour;
             color: #fff;
             padding: 15px 0;
             text-align: center;
