@@ -10,13 +10,34 @@ Select Your Team - NHL Schedule Viewer
     <h2>Select Your Team</h2>
 </header>
 
-<div class="team-select">
-@foreach ($teams as $teamGroup)
-    <div class="team-group">
-        @foreach ($teamGroup as $id => $team)
-        <div class="team">{{ link_to_route('team_schedule_path', $team, [$id]) }}</div>
+@foreach ($devisions as $conference => $devision)
+
+<div class="{{ $conference }}-conference conference-container">
+
+    {{ HTML::image("assets/img/NHL_{$conference}_Conference.svg", "{$conference} Conference Logo", [
+        'width' => '250px', 
+        'height' => '179px', 
+        'class' => 'conference-logo']) }}
+
+    @foreach ($devision as $name => $teams)
+
+    <article class="devisions-container">
+
+        <header class="devision-header">
+            <h3>{{ ucfirst($name) }}</h3>
+        </header>
+
+        @foreach ($teams as $team)
+            <div class="team">{{ link_to_route('team_schedule_path', Config::get("nhl.teams.{$team}"), [$team]) }}</div>
         @endforeach
-    </div>
-@endforeach
+
+    </article>
+
+    @endforeach
+
+    <div style="clear: both;"></div>
+
 </div>
+
+@endforeach
 @stop

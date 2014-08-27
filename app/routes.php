@@ -2,10 +2,9 @@
 
 Route::get('/', ['as' => 'home_path', function() 
 {
-    $teams = Config::get('nhl.teams');
-    $teams = array_chunk($teams, 2, true);
-    
-    return View::make('home')->withTeams($teams);
+    $devisions = Config::get('nhl.devisions');
+
+    return View::make('home')->withDevisions($devisions);
 }]);
 
 Route::get('/team/{id}', [
