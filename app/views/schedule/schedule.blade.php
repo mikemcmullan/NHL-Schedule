@@ -33,15 +33,15 @@ NHL {{ $teamName }} Schedule &#8250; 2014 - 2015 NHL Schedule Viewer
 
         <div class="visitor">
             <span>
-                <span class="full-team-name">{{ $match['away'] }}</span> 
-                <span class="team-id">{{ getTeamID($match['away']) }}</span>
+                <span class="full-team-name">{{ link_to_route('team_schedule_path', $match['away'], [getTeamID($match['away'])]) }}</span> 
+                <span class="team-id">{{ link_to_route('team_schedule_path', getTeamID($match['away']), [getTeamID($match['away'])]) }}</span>
             </span>
         </div>
 
         <div class="home">
             <span>
-                <span class="full-team-name">{{ $match['home'] }}</span> 
-                <span class="team-id">{{ getTeamID($match['home']) }}</span>
+                <span class="full-team-name">{{ link_to_route('team_schedule_path', $match['home'], [getTeamID($match['home'])]) }}</span> 
+                <span class="team-id">{{ link_to_route('team_schedule_path', getTeamID($match['home']), [getTeamID($match['home'])]) }}</span>
             </span>
         </div>
 
