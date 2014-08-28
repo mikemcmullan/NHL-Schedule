@@ -18,10 +18,11 @@
         (function($) {
             var month;
 
-            $('.month-sep').on('click', function(e) {
+            $('.schedule-month-header').on('click', function(e) {
                 month = $(this).data('month');
+                console.log(month);
 
-                $('tr[data-month="' + month + '"]').toggleClass('collapsed');
+                $('.schedule-row[data-month="' + month + '"]').toggleClass('collapsed');
             });
 
         })(jQuery);

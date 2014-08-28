@@ -29,7 +29,7 @@ class TeamController extends BaseController {
             App::abort(404);
         }
 
-        return View::make('schedule.index')
+        return View::make('schedule.schedule')
             ->with('schedule', $sortedSchedule)
             ->with('teamName', Config::get("nhl.teams.{$id}"));
     }

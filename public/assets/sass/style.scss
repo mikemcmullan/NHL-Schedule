@@ -35,7 +35,7 @@ a {
 }
 
 
-header {
+.page-header {
 
     h1,
     h2 {
@@ -188,6 +188,98 @@ table {
             text-align: left;
             padding-left:20px;
             border-left: 0;
+        }
+    }
+}
+
+.schedule-wrap {
+    background: #fafafa;
+    margin: 0 auto;
+    width: auto;
+    color: #666;
+    text-shadow: 1px 1px 0px #fff;
+    box-shadow: 0 0 6px 1px #181818;
+    border: 2px solid #eaebec;
+}
+
+.schedule-header {
+    font-weight: bold;
+}
+
+.schedule-month-header {
+    background: #012a59;
+    text-shadow: none;
+    color: #f1f1f1;
+    padding: 15px 20px;
+    border-bottom: 2px solid #eaebec;
+
+    h2 {
+        margin: 0;
+    }
+
+    @media (max-width: 450px) {
+        padding-left: 10px;
+    }
+}
+
+.schedule-row {
+    display: flex;
+
+    &.next-game {
+        background: #024590;
+        text-shadow: none;
+        color: #f1f1f1;
+    }
+
+    &.collapsed {
+        display: none;
+    }
+
+    & > div {
+        flex: 1;
+        display: flex;
+        padding: 15px 0;
+        border-bottom: 2px solid #eaebec;
+        border-right: 2px solid #eaebec;
+        text-align: center;
+
+        & > span {
+            display: inline-block;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 100%;
+        }
+
+        &.date { 
+            flex-basis: 25%; 
+            text-align: left; 
+            padding-left: 20px;
+            padding-right: 5px; 
+            text-align: left; 
+        }
+
+        &.visitor { flex-basis: 16%; }
+        &.home { flex-basis: 16%; }
+        &.time { flex-basis: 13%; }
+
+        .full-team-name { display: inline; }
+        .team-id { display: none; }
+
+        &.results { 
+            flex-basis: 30%; 
+            border-right: 0; 
+        }
+
+        @media (max-width: 450px) {
+            &.date { 
+                padding-left: 10px;
+            }
+
+            &.home,
+            &.visitor {
+                .full-team-name { display: none; }
+                .team-id { display: inline; }
+            }
         }
     }
 }

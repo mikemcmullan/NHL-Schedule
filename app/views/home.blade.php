@@ -5,7 +5,7 @@ Select Your Team &#8250; 2014 - 2015 NHL Schedule Viewer
 @stop
 
 @section('content')
-<header>
+<header class="page-header">
     <h1>2014 - 2015 NHL Schedule Viewer</h1>
 </header>
 
