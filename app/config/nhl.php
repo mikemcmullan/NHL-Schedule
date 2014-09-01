@@ -77,10 +77,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | List of Devisions & Which Teams Belong to Each Devision.
+    | List of Conferences / Devisions & Which Teams Belong to Each Devision.
     |--------------------------------------------------------------------------
     */
-    'devisions' => [
+    'conferences' => [
         'eastern' => [
             'metropolitan' => ['CAR', 'CBJ', 'NJD', 'NYI', 'NYR', 'PHI', 'PIT', 'WSH'],
             'atlantic' => ['BOS', 'BUF', 'DET', 'FLA', 'MTL', 'OTT', 'TBL', 'TOR']
