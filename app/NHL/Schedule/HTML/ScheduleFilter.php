@@ -34,17 +34,27 @@ class ScheduleFilter implements ScheduleImporterInterface {
     }
 
     /**
+     * @param $string
+     * @return mixed
+     */
+    private function stripHTMLComments($string)
+    {
+        return trim(preg_replace('/<!--(.|\s)*?-->/', '', $string));
+    }
+
+    /**
      * Creates a unique identifier based on the date & time.
-     * 
+     *
+     * @param  string $teamID
      * @param  string $date
      * @param  string $time
      * @return object
      */
-    private function createUid($date, $time)
+    private function createUid($teamID, $date, $time)
     {
         $dateTime = $this->createDate($date, $time);
 
-        return preg_replace('/[^0-9]/', '', $dateTime->toDateTimeString());
+        return hash('md5', $teamID . $dateTime->toDateTimeString());
     }
 
     /**
@@ -64,12 +74,17 @@ class ScheduleFilter implements ScheduleImporterInterface {
         $time = head($match->find('.time .skedStartTimeEST'))->innertext;
         $time = str_replace(' ET', '', $time);
 
+        $teams = [
+            'home' => getTeamID(trim(array_get($match->find('.team .teamName a'), 1)->innertext)),
+            'away' => getTeamID(trim(array_get($match->find('.team .teamName a'), 0)->innertext))
+        ];
+
         return [
-            'uid'         => $this->createUid($date, $time),
+            'uid'         => $this->createUid($teams['home'], $date, $time),
             'date'        => $this->createDate($date, $time),
-            'home'        => array_get($match->find('.team .teamName a'), 1)->innertext,
-            'away'        => array_get($match->find('.team .teamName a'), 0)->innertext,
-            'description' => head($match->find('.tvInfo'))->innertext 
+            'home'        => $teams['home'],
+            'away'        => $teams['away'],
+            'description' => $this->stripHTMLComments(head($match->find('.tvInfo'))->innertext)
         ];
     }
 
