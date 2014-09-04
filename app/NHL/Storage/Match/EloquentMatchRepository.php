@@ -11,9 +11,14 @@ class EloquentMatchRepository implements MatchRepository {
         return Match::create($input);
     }
 
-    public function doesMatchExist($uid)
+    public function byUID($uid)
     {
         return Match::where('uid', '=', $uid)->first();
+    }
+
+    public function updateByUID($uid, $input)
+    {
+        return Match::where('uid', '=', $uid)->update($input);
     }
 
     public function byTeam($teamID)

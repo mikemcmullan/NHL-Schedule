@@ -27,18 +27,22 @@ class ScheduleDBImporter implements ScheduleImporter {
 
     private function insertIntoDB($match, $key, $teamID)
     {
-        if ($this->matchRepo->doesMatchExist($match['uid']) === null)
-        {
-            $m = [
-                'uid'           => $match['uid'],
-                'team_id'       => $teamID,
-                'date'          => $match['date'],
-                'home_team'     => $match['home'],
-                'away_team'     => $match['away'],
-                'description'   => $match['description']
-            ];
+        $m = [
+            'uid'           => $match['uid'],
+            'team_id'       => $teamID,
+            'date'          => $match['date'],
+            'home_team'     => $match['home'],
+            'away_team'     => $match['away'],
+            'description'   => $match['description']
+        ];
 
+        if ($this->matchRepo->byUID($match['uid']) === null)
+        {
             return $this->matchRepo->create($m);
+        }
+        else
+        {
+            return $this->matchRepo->updateByUID($match['uid'], $m);
         }
     }
 
