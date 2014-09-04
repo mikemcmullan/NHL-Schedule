@@ -2,6 +2,12 @@
 
 use Carbon\Carbon;
 
+/**
+ * Determine whether a month has passed.
+ *
+ * @param $match
+ * @return bool
+ */
 function isCollapsed($match)
 {
     $currentDateTime = Config::get('nhl.currentDateTime');
@@ -9,21 +15,48 @@ function isCollapsed($match)
     return $currentDateTime->timestamp > Carbon::create($match['date']->year, $match['date']->month, $match['date']->daysInMonth)->timestamp;
 }
 
-function getTeamID($teamString)
+/**
+ * Get a teams id from its full name.
+ *
+ * @param $teamName
+ * @return string
+ */
+function getTeamID($teamName)
 {
     $teams = Config::get('nhl.teams');
 
-    if ($teamString === 'NY Rangers')
-        return 'NYR';
-
-    if ($teamString === 'NY Islanders')
-        return 'NYI';
-
     foreach ($teams as $id => $team) 
     {
-        if (stripos($team, $teamString) !== false)
+        foreach($team as $teamN)
         {
-            return $id;
+            if (stripos($teamN, $teamName) !== false)
+            {
+                return $id;
+            }
         }
     }
+}
+
+/**
+ * Get a teams full name from it's ID.
+ * @param $teamID
+ * @return string
+ */
+function getTeamName($teamID)
+{
+    $teams = Config::get('nhl.teams');
+
+    return head(array_get($teams, $teamID));
+}
+
+/**
+ * Get a teams short name from it's ID.
+ * @param $teamID
+ * @return string
+ */
+function getTeamShortName($teamID)
+{
+    $teams = Config::get('nhl.teams');
+
+    return last(array_get($teams, $teamID));
 }
