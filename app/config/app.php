@@ -122,7 +122,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-		'NHL\Schedule\ScheduleServiceProvider'
+		'NHL\Schedule\ScheduleServiceProvider',
+        'NHL\Storage\StorageServiceProvider'
 	),
 
 	/*
