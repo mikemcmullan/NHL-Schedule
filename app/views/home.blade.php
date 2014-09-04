@@ -26,8 +26,8 @@ Select Your Team &#8250; 2014 - 2015 NHL Schedule Viewer
             <h3>{{ ucfirst($name) }}</h3>
         </header>
 
-        @foreach ($teams as $team)
-            <div class="team">{{ link_to_route('team_schedule_path', Config::get("nhl.teams.{$team}"), [$team]) }}</div>
+        @foreach ($teams as $teamID)
+            <div class="team">{{ link_to_route('team_schedule_path', getTeamName($teamID), [$teamID]) }}</div>
         @endforeach
 
     </article>
