@@ -15,12 +15,8 @@ class ScheduleServiceProvider extends ServiceProvider {
         {
             $importer = $app->make('NHL\Schedule\HTML\ScheduleImporter');
             $filter = new ScheduleFilter($importer);
-            return $sorter = new ScheduleSorter($filter, $app->make('Illuminate\Config\Repository'));
 
-            // return new ScheduleCache(
-            //     $filter, 
-            //     $app->make('Illuminate\Cache\Repository'),
-            //     $app->make('Illuminate\Config\Repository'));
+            return new ScheduleDBImporter($filter, $app->make('NHL\Storage\Match\MatchRepository'));
         });
     }
 
