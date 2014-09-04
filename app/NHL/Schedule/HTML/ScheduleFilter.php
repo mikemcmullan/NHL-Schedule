@@ -14,6 +14,11 @@ class ScheduleFilter implements ScheduleImporterInterface {
     private $scheduleImporter;
 
     /**
+     * @var string
+     */
+    private $teamID = '';
+
+    /**
      * @param ScheduleImporter $scheduleImporter
      */
     public function __construct(ScheduleImporter $scheduleImporter)
@@ -54,13 +59,13 @@ class ScheduleFilter implements ScheduleImporterInterface {
     {
         $dateTime = $this->createDate($date, $time);
 
-        return hash('md5', $teamID . $dateTime->toDateTimeString());
+        return $teamID . $dateTime->format('YmdHis');
     }
 
     /**
      * Return desired keys & values based on provided data.
      * 
-     * @param  array $match
+     * @param  \simple_html_dom_node $match
      * @return array
      */
     private function mapMatches(\simple_html_dom_node $match)
@@ -80,7 +85,7 @@ class ScheduleFilter implements ScheduleImporterInterface {
         ];
 
         return [
-            'uid'         => $this->createUid($teams['home'], $date, $time),
+            'uid'         => $this->createUid($this->teamID, $date, $time),
             'date'        => $this->createDate($date, $time),
             'home'        => $teams['home'],
             'away'        => $teams['away'],
@@ -93,9 +98,11 @@ class ScheduleFilter implements ScheduleImporterInterface {
      * 
      * @return array
      */
-    public function run($teamId)
+    public function run($teamID)
     {
-        $schedule = $this->scheduleImporter->run($teamId);
+        $schedule = $this->scheduleImporter->run($teamID);
+
+        $this->teamID = $teamID;
 
         return array_filter(array_map([$this, 'mapMatches'], $schedule));
     }
