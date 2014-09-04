@@ -1,16 +1,21 @@
 <?php
 
-use NHL\Schedule\ScheduleImporter;
 use NHL\Exceptions\NonExistentTeamException;
-use Carbon\Carbon;
+use NHL\Storage\Match\MatchRepository;
+use NHL\Schedule\ScheduleSorter;
 
 class TeamController extends BaseController {
 
-    private $scheduleImporter;
+    private $matchRepository;
+    /**
+     * @var \NHL\Schedule\ScheduleSorter
+     */
+    private $scheduleSorter;
 
-    public function __construct(ScheduleImporter $scheduleImporter)
+    public function __construct(MatchRepository $matchRepository, ScheduleSorter $scheduleSorter)
     {
-        $this->scheduleImporter = $scheduleImporter;
+        $this->matchRepository = $matchRepository;
+        $this->scheduleSorter = $scheduleSorter;
     }
 
     public function team($id = 'TOR')
@@ -18,11 +23,11 @@ class TeamController extends BaseController {
         return Redirect::route('team_schedule_path', [$id]);
     }
 
-    public function schedule($id = 'TOR')
+    public function schedule($teamID = 'TOR')
     {
         try
         {
-            $sortedSchedule = $this->scheduleImporter->run($id);
+            $sortedSchedule = $this->scheduleSorter->sort($this->matchRepository->byTeam($teamID));
         } 
         catch (NonExistentTeamException $e) 
         {
@@ -31,7 +36,7 @@ class TeamController extends BaseController {
 
         return View::make('schedule.schedule')
             ->with('schedule', $sortedSchedule)
-            ->with('teamName', Config::get("nhl.teams.{$id}"));
+            ->with('teamName', getTeamName($teamID));
     }
 
 }
