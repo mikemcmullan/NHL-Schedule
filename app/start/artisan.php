@@ -11,3 +11,4 @@
 |
 */
 
+Artisan::add(new ScheduleImporterCommand(App::make('NHL\Schedule\ScheduleImporter')));

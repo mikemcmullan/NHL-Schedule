@@ -13,7 +13,7 @@ return [
     | of carbon may also be used.
     |
     */
-    'scheduleCacheLength' => Carbon::now()->addDay(),
+    'scheduleCacheLength' => Carbon::now()->subDay(),
 
     /*
     |--------------------------------------------------------------------------
