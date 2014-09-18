@@ -78,7 +78,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | List of Conferences / Devisions & Which Teams Belong to Each Devision.
+    | List of Conferences / Divisions & Which Teams Belong to Each Division.
     |--------------------------------------------------------------------------
     */
     'conferences' => [
