@@ -54,18 +54,18 @@ class ScheduleDownloader {
     public function get($url)
     {
         $key = $this->createCacheKey($url);
+        $cacheLength = $this->config->get('nhl.scheduleCacheLength');
 
-        if ( ! $this->cache->has($key))
+        if ( ! $this->cache->has($key) || $cacheLength === false)
         {
             $request  = $this->client->createRequest('GET', $url);
             $response = $this->client->send($request);
             $body     = (string) $response->getBody();
 
-            $this->cache->put($key, $body, $this->config->get('nhl.scheduleCacheLength'));
+            $cacheLength && $this->cache->put($key, $body, $cacheLength);
 
             return $body;
         }
-        
 
         return $this->cache->get($key);
     }

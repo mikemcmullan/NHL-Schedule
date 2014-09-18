@@ -9,11 +9,12 @@ return [
     | Schedule Cache Length
     |--------------------------------------------------------------------------
     |
-    | How long in minutes should the schedule stay in the cache. An instance
-    | of carbon may also be used.
+    | While importing a schedule we can choose to cache it locally. You can
+    | provide either a time in minutes, an instance of carbon or false if
+    | you do not want to use the cache.
     |
     */
-    'scheduleCacheLength' => Carbon::now()->subDay(),
+    'scheduleCacheLength' => false,
 
     /*
     |--------------------------------------------------------------------------
