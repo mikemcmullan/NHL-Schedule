@@ -9,11 +9,6 @@ use GuzzleHttp\Client;
 class ScheduleDownloader {
 
     /**
-     * @var ScheduleImporter
-     */
-    private $scheduleImporter;
-
-    /**
      * @var ConfigRepository
      */
     private $client;
@@ -24,25 +19,15 @@ class ScheduleDownloader {
     private $cache;
 
     /**
-     *  @var Client     $client
-     *  @var Repository $cache
+     * @var Client $client
+     * @param CacheRepository|Repository $cache
+     * @param ConfigRepository $config
      */
     public function __construct(Client $client, CacheRepository $cache, ConfigRepository $config)
     {
         $this->client = $client;
         $this->cache = $cache;
         $this->config = $config;
-    }
-
-    /**
-     * Creates a cache key based on the provided string.
-     * 
-     * @param  string $string
-     * @return string
-     */
-    private function createCacheKey($string)
-    {
-        return sha1($string);
     }
 
     /**
@@ -53,21 +38,19 @@ class ScheduleDownloader {
      */
     public function get($url)
     {
-        $key = $this->createCacheKey($url);
-        $cacheLength = $this->config->get('nhl.scheduleCacheLength');
+        $cacheLength = $this->config->get('nhl.scheduleCacheLength', 0);
 
-        if ( ! $this->cache->has($key) || $cacheLength === false)
+        if ( ! $this->cache->has($url) || $cacheLength === false)
         {
             $request  = $this->client->createRequest('GET', $url);
             $response = $this->client->send($request);
             $body     = (string) $response->getBody();
 
-            $cacheLength && $this->cache->put($key, $body, $cacheLength);
+            $cacheLength && $this->cache->put($url, $body, $cacheLength);
 
             return $body;
         }
 
-        return $this->cache->get($key);
+        return $this->cache->get($url);
     }
-
 }
