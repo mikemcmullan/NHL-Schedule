@@ -13,7 +13,7 @@ class ScheduleImporterCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'scheduleImporter:run';
+	protected $name = 'nhl:importSchedule';
 
 	/**
 	 * The console command description.
@@ -27,12 +27,12 @@ class ScheduleImporterCommand extends Command {
      */
     private $scheduleImporter;
 
-    /**
-     * Create a new command instance.
-     *
-     * @param ScheduleImporter $scheduleImporter
-     * @return \ScheduleImporter
-     */
+	/**
+	 * Create a new command instance.
+	 *
+	 * @param ScheduleImporter $scheduleImporter
+	 * @return \ScheduleImporterCommand
+	 */
 	public function __construct(ScheduleImporter $scheduleImporter)
 	{
 		parent::__construct();
