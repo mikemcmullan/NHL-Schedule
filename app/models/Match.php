@@ -10,7 +10,7 @@ class Match extends Eloquent {
     /**
      * @var array
      */
-    protected $fillable = ['uid', 'team_id', 'date', 'home_team', 'away_team', 'description'];
+    protected $fillable = ['uid', 'team_id', 'date', 'home_team', 'away_team', 'tv_info', 'results'];
 
     /**
      * @param $value
