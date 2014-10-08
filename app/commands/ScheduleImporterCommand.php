@@ -20,7 +20,7 @@ class ScheduleImporterCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Import a teams schedule.';
+	protected $description = 'Import a teams schedule by season.';
 
     /**
      * @var \NHL\Schedule\ScheduleImporter
@@ -46,11 +46,11 @@ class ScheduleImporterCommand extends Command {
 	 */
 	public function fire()
 	{
-		$teamID = $this->argument('teamID');
+		$teamId = $this->argument('teamId');
 
         try
         {
-            $this->scheduleImporter->run($teamID);
+            $this->scheduleImporter->bySeason($teamId);
         }
         catch(NonExistentTeamException $e)
         {
@@ -66,7 +66,7 @@ class ScheduleImporterCommand extends Command {
 	protected function getArguments()
 	{
 		return array(
-			array('teamID', InputArgument::REQUIRED, 'TOR'),
+			array('teamId', InputArgument::REQUIRED, 'TOR'),
 		);
 	}
 
