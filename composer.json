@@ -9,7 +9,8 @@
 		"guzzlehttp/guzzle": "4.1.*",
 		"johngrogg/ics-parser": "dev-master",
 		"paquettg/php-html-parser": "1.6.*",
-		"sunra/php-simple-html-dom-parser": "1.5.*"
+		"sunra/php-simple-html-dom-parser": "1.5.*",
+		"doctrine/dbal": "~2.4"
 	},
 	"autoload": {
 		"psr-4": {
