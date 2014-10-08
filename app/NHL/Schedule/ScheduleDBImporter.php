@@ -18,6 +18,7 @@ class ScheduleDBImporter implements ScheduleImporter {
 
     /**
      * @param ScheduleImporter $scheduleImporter
+     * @param MatchRepository $matchRepo
      */
     public function __construct(ScheduleImporter $scheduleImporter, MatchRepository $matchRepo)
     {
@@ -46,10 +47,16 @@ class ScheduleDBImporter implements ScheduleImporter {
         }
     }
 
-    public function run($teamID)
+    /**
+     * Import the entire season schedule for a particular team.
+     *
+     * @param $teamId
+     * @return array
+     */
+    public function bySeason($teamId)
     {
-        $schedule = $this->scheduleImporter->run($teamID);
+        $schedule = $this->scheduleImporter->bySeason($teamId);
 
-        array_walk($schedule, [$this, 'insertIntoDB'], $teamID);
+        array_walk($schedule, [$this, 'insertIntoDB'], $teamId);
     }
 }

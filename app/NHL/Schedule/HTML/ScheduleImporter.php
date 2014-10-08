@@ -39,9 +39,13 @@ class ScheduleImporter implements ScheduleImporterInterface {
     }
 
     /**
-     * Run the import.
+     * Import the entire season schedule for a particular team.
+     *
+     * @param $teamId
+     * @throws NonExistentTeamException
+     * @return array
      */
-    public function run($teamId)
+    public function bySeason($teamId)
     {
         // Make sure the team exists.
         if ( ! $this->config->has("nhl.teams.{$teamId}"))
@@ -50,8 +54,19 @@ class ScheduleImporter implements ScheduleImporterInterface {
         }
 
         // Download the schedule and return it as a string.
-        $htmlString = $this->scheduleDownloader->get(sprintf($this->config->get('nhl.htmlSeasonScheduleUrl'), $teamId));
+        $htmlString = $this->scheduleDownloader->get(sprintf($this->config->get('nhl.htmlTeamSeasonScheduleUrl'), $teamId));
 
+        return $this->parse($htmlString);
+    }
+
+    /**
+     * Parse the html. Each table row will them become an
+     *
+     * @param $htmlString
+     * @return array
+     */
+    private function parse($htmlString)
+    {
         // Parse the html.
         $dom = HtmlDomParser::str_get_html($htmlString);
 

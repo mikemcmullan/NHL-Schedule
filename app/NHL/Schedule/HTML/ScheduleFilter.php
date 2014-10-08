@@ -3,7 +3,6 @@
 namespace NHL\Schedule\HTML;
 
 use NHL\Schedule\ScheduleImporter as ScheduleImporterInterface;
-use PHPHtmlParser\Dom\HTMLNode;
 use Carbon\Carbon;
 
 class ScheduleFilter implements ScheduleImporterInterface {
@@ -16,7 +15,7 @@ class ScheduleFilter implements ScheduleImporterInterface {
     /**
      * @var string
      */
-    private $teamID = '';
+    private $teamId = '';
 
     /**
      * @param ScheduleImporter $scheduleImporter
@@ -75,7 +74,7 @@ class ScheduleFilter implements ScheduleImporterInterface {
             return;
         }
 
-        $date = head($match->find('.date .skedStartDateLocal'))->innertext;
+        $date = head($match->find('.date .skedStartDateSite'))->innertext;
         $time = head($match->find('.time .skedStartTimeEST'))->innertext;
         $time = str_replace(' ET', '', $time);
 
@@ -85,7 +84,7 @@ class ScheduleFilter implements ScheduleImporterInterface {
         ];
 
         return [
-            'uid'         => $this->createUid($this->teamID, $date, $time),
+            'uid'         => $this->createUid($this->teamId, $date, $time),
             'date'        => $this->createDate($date, $time),
             'home'        => $teams['home'],
             'away'        => $teams['away'],
@@ -94,17 +93,17 @@ class ScheduleFilter implements ScheduleImporterInterface {
     }
 
     /**
-     * Run the filter.
-     * 
+     * Import the entire season schedule for a particular team.
+     *
+     * @param $teamId
      * @return array
      */
-    public function run($teamID)
+    public function bySeason($teamId)
     {
-        $schedule = $this->scheduleImporter->run($teamID);
+        $schedule = $this->scheduleImporter->bySeason($teamId);
 
-        $this->teamID = $teamID;
+        $this->teamId = $teamId;
 
         return array_filter(array_map([$this, 'mapMatches'], $schedule));
     }
-
 }

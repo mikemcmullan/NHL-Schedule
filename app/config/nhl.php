@@ -29,14 +29,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | HTML Season Schedule Url
+    | HTML Team Season Schedule Url
     |--------------------------------------------------------------------------
     |
-    | The location of the HTML schedule for a team; %s is the placeholder for 
-    | a teams name (ex. TOR => Toronto Maple Leafs). 
+    | The url of the HTML schedule for a team; %s is the placeholder for
+    | a teams id (ex. TOR => Toronto Maple Leafs).
     |
     */
-    'htmlSeasonScheduleUrl' => 'http://www.nhl.com/ice/schedulebyseason.htm?season=20142015&gameType=2&team=%s&network=&venue=',
+    'htmlTeamSeasonScheduleUrl' => 'http://www.nhl.com/ice/schedulebyseason.htm?season=20142015&gameType=2&team=%s&network=&venue=',
 
     /*
     |--------------------------------------------------------------------------
