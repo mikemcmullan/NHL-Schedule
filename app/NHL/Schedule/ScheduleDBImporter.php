@@ -33,9 +33,11 @@ class ScheduleDBImporter implements ScheduleImporter {
             'team_id'       => $teamID,
             'date'          => $match['date'],
             'home_team'     => $match['home'],
-            'away_team'     => $match['away'],
-            'description'   => $match['description']
+            'away_team'     => $match['away']
         ];
+
+        $match['tv_info'] && $m['tv_info'] = $match['tv_info'];
+        $match['results'] && $m['results'] = $match['results'];
 
         if ($this->matchRepo->byUID($match['uid']) === null)
         {

@@ -78,9 +78,14 @@ class ScheduleFilter implements ScheduleImporterInterface {
         $time = head($match->find('.time .skedStartTimeEST'))->innertext;
         $time = str_replace(' ET', '', $time);
 
+        $info = $this->stripHTMLComments(head($match->find('.tvInfo'))->innertext);
+
+        $tvInfo = $this->getTvInfo($info);
+        $results = $this->getResults($info);
+
         $teams = [
-            'home' => getTeamID(trim(array_get($match->find('.team .teamName a'), 1)->innertext)),
-            'away' => getTeamID(trim(array_get($match->find('.team .teamName a'), 0)->innertext))
+            'home' => getTeamID(trim(array_get($match->find('.team .teamName'), 1)->plaintext)),
+            'away' => getTeamID(trim(array_get($match->find('.team .teamName'), 0)->plaintext))
         ];
 
         return [
@@ -88,7 +93,8 @@ class ScheduleFilter implements ScheduleImporterInterface {
             'date'        => $this->createDate($date, $time),
             'home'        => $teams['home'],
             'away'        => $teams['away'],
-            'description' => $this->stripHTMLComments(head($match->find('.tvInfo'))->innertext)
+            'tv_info'     => $tvInfo,
+            'results'     => $results
         ];
     }
 
@@ -105,5 +111,29 @@ class ScheduleFilter implements ScheduleImporterInterface {
         $this->teamId = $teamId;
 
         return array_filter(array_map([$this, 'mapMatches'], $schedule));
+    }
+
+    /**
+     * Determine if the string is TV information. TV info does not
+     * usually contain a colon.
+     *
+     * @param $info
+     * @return null|string
+     */
+    private function getTvInfo($info)
+    {
+        return strpos($info, ':') === false ? strip_tags($info) : null;
+    }
+
+    /**
+     * Determine if the string is match results. Results usually contain
+     * a colon.
+     *
+     * @param $info
+     * @return null|string
+     */
+    private function getResults($info)
+    {
+        return strpos($info, ':') !== false ? strip_tags($info) : null;
     }
 }
