@@ -46,6 +46,7 @@ return [
     'teams' => [
         'ANA' => ['Anaheim Ducks', 'Anaheim'],
         'ARI' => ['Arizona Coyotes', 'Arizona'],
+        'PHX' => ['Phoenix Coyotes', 'Phoenix'],
         'BOS' => ['Boston Bruins', 'Boston'],
         'BUF' => ['Buffalo Sabres', 'Buffalo'],
         'CGY' => ['Calgary Flames', 'Calgary'],
