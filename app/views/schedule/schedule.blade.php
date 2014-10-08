@@ -43,7 +43,11 @@ NHL {{ $teamName }} Schedule &#8250; 2014 - 2015 NHL Schedule Viewer
 
         <div class="time"><span>{{ $match['date']->format('g:i A') }}</span></div>
 
-        <div class="results"><span>{{ $match['description'] }}</span></div>
+        @if ( ! $match['results'])
+        <div class="results"><span>{{ $match['tv_info'] }}</span></div>
+        @else
+        <div class="results"><span>{{ $match['results'] }}</span></div>
+        @endif
 
     </div>
 
