@@ -2,9 +2,30 @@
 
 namespace NHL\Storage\Match;
 
+use Illuminate\Config\Repository as ConfigRepository;
 use NHL\Exceptions\NonExistentTeamException;
 
 class EloquentMatchRepository implements MatchRepository {
+
+    /**
+     * @var Repository
+     */
+    private $config;
+
+    /**
+     * @var Match
+     */
+    private $model;
+
+    /**
+     * @param ConfigRepository|Repository $config
+     * @param Match $model
+     */
+    public function __construct(ConfigRepository $config, Match $model)
+    {
+        $this->config = $config;
+        $this->model = $model;
+    }
 
     /**
      * @param $input
@@ -41,7 +62,7 @@ class EloquentMatchRepository implements MatchRepository {
      */
     public function byTeam($teamID)
     {
-        $matches = Match::where('team_id', '=', $teamID)->get();
+        $matches = $this->model->where('team_id', '=', $teamID)->get();
 
         if ($matches->isEmpty())
         {
@@ -51,12 +72,26 @@ class EloquentMatchRepository implements MatchRepository {
         return $matches;
     }
 
+    public function today()
+    {
+        $date = $this->config->get('nhl.currentDateTime');
+
+        if ($date->hour < 2)
+        {
+            $date = $date->subDay();
+        }
+
+        $mysqlFormat = $date->toDateString();
+
+        return $this->model->whereRaw("DATE(date) = '{$mysqlFormat}'")->get();
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function all()
     {
-        return Match::all();
+        return $this->model->all();
     }
 
 }
