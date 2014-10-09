@@ -12,3 +12,4 @@
 */
 
 Artisan::add(new ScheduleImporterCommand(App::make('NHL\Schedule\ScheduleImporter')));
+Artisan::add(new UpdateTodaysSchedule(App::make('NHL\Schedule\ScheduleImporter'), App::make('NHL\Storage\Match\MatchRepository')));
