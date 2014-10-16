@@ -95,7 +95,7 @@ class EloquentMatchRepository implements MatchRepository {
 
         $mysqlFormat = $date->toDateString();
 
-        return $this->model->whereRaw("DATE(date) = '{$mysqlFormat}'")->get();
+        return $this->model->whereRaw("DATE(date) = '{$mysqlFormat}'")->orderBy('date')->get();
     }
 
     /**
