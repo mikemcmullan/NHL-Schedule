@@ -35,7 +35,8 @@ a {
 }
 
 
-.page-header {
+.page-header,
+.page-sub-header {
 
     h1,
     h2 {
@@ -210,7 +211,7 @@ table {
     background: #012a59;
     text-shadow: none;
     color: #f1f1f1;
-    padding: 15px 20px;
+    padding: 10px 20px;
     border-bottom: 2px solid #eaebec;
 
     h2 {
@@ -247,7 +248,7 @@ table {
     & > div {
         flex: 1;
         display: flex;
-        padding: 15px 0;
+        padding: 13px 0;
         border-bottom: 2px solid #eaebec;
         border-right: 2px solid #eaebec;
         text-align: center;
@@ -264,7 +265,6 @@ table {
             text-align: left; 
             padding-left: 20px;
             padding-right: 5px; 
-            text-align: left; 
         }
 
         &.visitor { flex-basis: 16%; }
@@ -276,7 +276,12 @@ table {
 
         &.results { 
             flex-basis: 30%; 
-            border-right: 0; 
+            border-right: 0;
+
+        }
+
+        &.no-games {
+            padding-left: 20px;
         }
 
         @media (max-width: 450px) {
@@ -316,15 +321,15 @@ table {
         }      
     }
 
-    &.eastern-conference .devisions-container .devision-header {
+    &.eastern-conference .divisions-container .division-header {
         background: #c41230;
     }
 
-    &.western-conference .devisions-container .devision-header {
+    &.western-conference .divisions-container .division-header {
         background: #003e7e;
     }
 
-    .devisions-container {
+    .divisions-container {
         width: 50%;
         float: left;
 
@@ -332,7 +337,7 @@ table {
             border-right: 2px #eaebec solid;
         }
 
-        .devision-header {
+        .division-header {
             color: #fff;
             padding: 15px 0;
             text-align: center;
