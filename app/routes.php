@@ -2,9 +2,9 @@
 
 Route::get('/', ['as' => 'home_path', function() 
 {
-    $devisions = Config::get('nhl.conferences');
+    $divisions = Config::get('nhl.conferences');
 
-    return View::make('home')->withDevisions($devisions);
+    return View::make('home')->withDivisions($divisions);
 }]);
 
 Route::get('/team/{id}', [
