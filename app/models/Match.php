@@ -1,7 +1,5 @@
 <?php
 
-namespace NHL\Storage\Match;
-
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Carbon\Carbon;
 

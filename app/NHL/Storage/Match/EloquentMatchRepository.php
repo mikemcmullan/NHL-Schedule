@@ -3,6 +3,7 @@
 namespace NHL\Storage\Match;
 
 use Illuminate\Config\Repository as ConfigRepository;
+use Match;
 use NHL\Exceptions\NonExistentTeamException;
 
 class EloquentMatchRepository implements MatchRepository {
