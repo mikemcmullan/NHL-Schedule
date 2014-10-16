@@ -123,7 +123,9 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		'NHL\Schedule\ScheduleServiceProvider',
-        'NHL\Storage\StorageServiceProvider'
+        'NHL\Storage\StorageServiceProvider',
+		'NHL\Composers\ComposerServiceProvider'
+
 	),
 
 	/*
