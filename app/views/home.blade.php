@@ -10,6 +10,7 @@ Select Your Team &#8250; 2014 - 2015 NHL Schedule Viewer
 </header>
 
 @foreach ($devisions as $conference => $devision)
+@foreach ($divisions as $conference => $division)
 
 <div class="{{ $conference }}-conference conference-container">
 
@@ -18,11 +19,11 @@ Select Your Team &#8250; 2014 - 2015 NHL Schedule Viewer
         'height' => '179px', 
         'class' => 'conference-logo']) }}
 
-    @foreach ($devision as $name => $teams)
+    @foreach ($division as $name => $teams)
 
-    <article class="devisions-container">
+    <article class="divisions-container">
 
-        <header class="devision-header">
+        <header class="division-header">
             <h3>{{ ucfirst($name) }}</h3>
         </header>
 
