@@ -7,9 +7,15 @@ Select Your Team &#8250; 2014 - 2015 NHL Schedule Viewer
 @section('content')
 <header class="page-header">
     <h1>2014 - 2015 NHL Schedule Viewer</h1>
+    <h2>Today's Matches</h2>
 </header>
 
-@foreach ($devisions as $conference => $devision)
+@include('schedule.partials.today')
+
+<div class="page-sub-header">
+    <h2>Or Select Your Team</h2>
+</div>
+
 @foreach ($divisions as $conference => $division)
 
 <div class="{{ $conference }}-conference conference-container">
