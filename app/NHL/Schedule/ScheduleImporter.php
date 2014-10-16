@@ -2,8 +2,6 @@
 
 namespace NHL\Schedule;
 
-use Carbon\Carbon;
-
 interface ScheduleImporter {
 
     /**
