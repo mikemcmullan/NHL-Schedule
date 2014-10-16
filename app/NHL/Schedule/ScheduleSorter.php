@@ -38,7 +38,7 @@ class ScheduleSorter {
      */
     private function determineIfNextGame($match)
     {
-        return $match['date'] > $this->config->get('nhl.currentDateTime') && $this->nextGame === false;
+        return $match['date']->addHours(2)->addMinutes(30) > $this->config->get('nhl.currentDateTime') && $this->nextGame === false;
     }
 
     /**
