@@ -2,7 +2,9 @@
 
 namespace NHL\Storage\Match;
 
+use Carbon\Carbon;
 use Illuminate\Config\Repository as ConfigRepository;
+use DB;
 use Match;
 use NHL\Exceptions\NonExistentTeamException;
 
@@ -34,36 +36,39 @@ class EloquentMatchRepository implements MatchRepository {
      */
     public function create($input)
     {
-        return Match::create($input);
+        return $this->model->create($input);
     }
 
     /**
-     * @param $uid
+     * Get a match by it's team and date.
+     *
+     * @param $teamId
+     * @param Carbon $matchDate
      * @return mixed
      */
-    public function byUID($uid)
+    public function get($teamId, Carbon $matchDate)
     {
-        return Match::where('uid', '=', $uid)->first();
+        return $this->model->where(function($query) use($teamId)
+        {
+            $query->where('home_team', '=', $teamId)
+                ->orWhere('away_team', '=', $teamId);
+        })->where(DB::raw('DATE(date)'), '=', $matchDate->toDateString())
+            ->take(1)
+            ->first();
     }
 
     /**
-     * @param $uid
-     * @param $input
-     * @return mixed
-     */
-    public function updateByUID($uid, $input)
-    {
-        return Match::where('uid', '=', $uid)->update($input);
-    }
-
-    /**
+     * Get all matches for a team.
+     *
      * @param $teamID
      * @return mixed
      * @throws NonExistentTeamException
      */
     public function byTeam($teamID)
     {
-        $matches = $this->model->where('team_id', '=', $teamID)->get();
+        $matches = $this->model->where('home_team', '=', $teamID)
+            ->orWhere('away_team', '=', $teamID)
+            ->orderBy('date')->get();
 
         if ($matches->isEmpty())
         {
@@ -73,6 +78,12 @@ class EloquentMatchRepository implements MatchRepository {
         return $matches;
     }
 
+    /**
+     * Get all games that took place today. If the current time
+     * is before 2 am count it as the previous day.
+     *
+     * @return mixed
+     */
     public function today()
     {
         $date = $this->config->get('nhl.currentDateTime');

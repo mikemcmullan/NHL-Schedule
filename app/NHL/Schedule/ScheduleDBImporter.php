@@ -26,11 +26,15 @@ class ScheduleDBImporter implements ScheduleImporter {
         $this->matchRepo = $matchRepo;
     }
 
-    private function insertIntoDB($match, $key, $teamID)
+    /**
+     * @param $match
+     * @param $key
+     * @param $teamId
+     * @return mixed
+     */
+    private function insertIntoDB($match, $key, $teamId)
     {
         $m = [
-            'uid'           => $match['uid'],
-            'team_id'       => $teamID,
             'date'          => $match['date'],
             'home_team'     => $match['home'],
             'away_team'     => $match['away']
@@ -39,13 +43,13 @@ class ScheduleDBImporter implements ScheduleImporter {
         $match['tv_info'] && $m['tv_info'] = $match['tv_info'];
         $match['results'] && $m['results'] = $match['results'];
 
-        if ($this->matchRepo->byUID($match['uid']) === null)
+        if ($match = $this->matchRepo->get($teamId, $match['date']))
         {
-            return $this->matchRepo->create($m);
+            return $match->update($m);
         }
         else
         {
-            return $this->matchRepo->updateByUID($match['uid'], $m);
+            return $this->matchRepo->create($m);
         }
     }
 
