@@ -59,8 +59,8 @@ class UpdateTodaysSchedule extends Command {
 		{
 			$todayMatches->each(function($item)
 			{
-				$this->scheduleImporter->bySeason($item->team_id);
-				$this->info($item->team_id . ' Schedule has been updated.');
+				$this->scheduleImporter->bySeason($item->home_team);
+				$this->info($item->home_team . ' / ' . $item->away_team . ' Schedule has been updated.');
 			});
 		}
 	}
