@@ -10,6 +10,11 @@ class Match extends Eloquent {
      */
     protected $fillable = ['uid', 'team_id', 'date', 'home_team', 'away_team', 'tv_info', 'results'];
 
+    public function scores()
+    {
+        return $this->hasMany('Score');
+    }
+
     /**
      * @param $value
      * @return static

@@ -14,10 +14,10 @@
 
     <div class="time"><span>{{ $match['date']->format('g:i A') }}</span></div>
 
-    @if ( ! $match['results'])
+    @if ($match['scores']->isEmpty())
     <div class="results"><span>{{ $match['tv_info'] }}</span></div>
     @else
-    <div class="results"><span>{{ $match['results'] }}</span></div>
+    <div class="results"><span>{{ presentScores($match) }}</span></div>
     @endif
 
 </div>

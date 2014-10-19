@@ -40,6 +40,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | JSON Scoreboard For Day Url
+    |--------------------------------------------------------------------------
+    |
+    | The URL of the scoreboard in JSONP format for a particular day; %s is
+    | the place holder for the date in YYYY-MM-DD format.
+    |
+    */
+    'jsonDayScoreboardUrl' => 'http://live.nhle.com/GameData/GCScoreboard/%s.jsonp',
+
+    /*
+    |--------------------------------------------------------------------------
     | List of NHL Teams
     |--------------------------------------------------------------------------
     */

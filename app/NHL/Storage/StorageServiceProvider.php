@@ -17,5 +17,10 @@ class StorageServiceProvider extends ServiceProvider {
             'NHL\Storage\Match\MatchRepository',
             'NHL\Storage\Match\EloquentMatchRepository'
         );
+
+        $this->app->bind(
+            'NHL\Storage\Score\ScoreRepository',
+            'NHL\Storage\Score\EloquentScoreRepository'
+        );
     }
 }

@@ -60,3 +60,29 @@ function getTeamShortName($teamID)
 
     return last(array_get($teams, $teamID));
 }
+
+/**
+ * Format a match score into a string.
+ * @param $match
+ * @return string
+ */
+function presentScores($match)
+{
+    $template = '%s %s (%d) - %s (%s) %s';
+
+    $team1 = $match['scores']->first();
+    $team2 = $match['scores']->last();
+    $status = $team1->game_status === 'final' ? 'FINAL:' : '';
+    $extra = '';
+
+    if ($team1->shootout)
+    {
+        $extra = 'SO';
+    }
+    elseif ($team1->overtime)
+    {
+        $extra = 'OT';
+    }
+
+    return sprintf($template, $status, $team1->team_id, $team1->score, $team2->team_id, $team2->score, $extra);
+}
