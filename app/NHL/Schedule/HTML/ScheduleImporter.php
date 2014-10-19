@@ -3,7 +3,7 @@
 namespace NHL\Schedule\HTML;
 
 use NHL\Schedule\ScheduleImporter as ScheduleImporterInterface;
-use NHL\Schedule\ScheduleDownloader;
+use NHL\Common\FileDownloader;
 use NHL\Exceptions\NonExistentTeamException;
 use PHPHtmlParser\Dom;
 use Sunra\PhpSimple\HtmlDomParser;
@@ -19,7 +19,7 @@ class ScheduleImporter implements ScheduleImporterInterface {
     /**
      * @var ScheduleDownloader
      */
-    private $scheduleDownloader;
+    private $fileDownloader;
 
     /**
      * @var ConfigRepository
@@ -28,13 +28,13 @@ class ScheduleImporter implements ScheduleImporterInterface {
 
     /**
      * @param Dom                $dom
-     * @param ScheduleDownloader $scheduleDownloader
+     * @param FileDownloader $fileDownloader
      * @param ConfigRepository   $config
      */
-    public function __construct(Dom $dom, ScheduleDownloader $scheduleDownloader, ConfigRepository $config)
+    public function __construct(Dom $dom, FileDownloader $fileDownloader, ConfigRepository $config)
     {
         $this->dom = $dom;
-        $this->scheduleDownloader = $scheduleDownloader;
+        $this->fileDownloader = $fileDownloader;
         $this->config = $config;
     }
 
@@ -54,7 +54,7 @@ class ScheduleImporter implements ScheduleImporterInterface {
         }
 
         // Download the schedule and return it as a string.
-        $htmlString = $this->scheduleDownloader->get(sprintf($this->config->get('nhl.htmlTeamSeasonScheduleUrl'), $teamId));
+        $htmlString = $this->fileDownloader->get(sprintf($this->config->get('nhl.htmlTeamSeasonScheduleUrl'), $teamId));
 
         return $this->parse($htmlString);
     }

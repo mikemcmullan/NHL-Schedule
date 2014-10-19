@@ -5,7 +5,7 @@ namespace NHL\Schedule\HTML;
 use NHL\Schedule\ScheduleImporter as ScheduleImporterInterface;
 use Carbon\Carbon;
 
-class ScheduleFilter implements ScheduleImporterInterface {
+class ScheduleMapper implements ScheduleImporterInterface {
 
     /**
      * @var ScheduleImporter
