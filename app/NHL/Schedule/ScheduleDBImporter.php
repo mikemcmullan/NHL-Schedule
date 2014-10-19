@@ -43,7 +43,7 @@ class ScheduleDBImporter implements ScheduleImporter {
         $match['tv_info'] && $m['tv_info'] = $match['tv_info'];
         $match['results'] && $m['results'] = $match['results'];
 
-        if ($match = $this->matchRepo->get($teamId, $match['date']))
+        if ($match = $this->matchRepo->get($teamId, $match['date'])->first())
         {
             return $match->update($m);
         }

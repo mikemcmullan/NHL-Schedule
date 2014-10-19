@@ -40,6 +40,15 @@ class EloquentMatchRepository implements MatchRepository {
     }
 
     /**
+     * @param $matchId
+     * @return \Illuminate\Support\Collection|static
+     */
+    public function byID($matchId)
+    {
+        return $this->model->find($matchId);
+    }
+
+    /**
      * Get a match by it's team and date.
      *
      * @param $teamId
@@ -48,13 +57,12 @@ class EloquentMatchRepository implements MatchRepository {
      */
     public function get($teamId, Carbon $matchDate)
     {
-        return $this->model->where(function($query) use($teamId)
+        return $this->model->with('scores')->where(function($query) use($teamId)
         {
-            $query->where('home_team', '=', $teamId)
-                ->orWhere('away_team', '=', $teamId);
+            $query->whereIn('home_team', (array) $teamId)
+                ->orWhereIn('away_team', (array) $teamId);
         })->where(DB::raw('DATE(date)'), '=', $matchDate->toDateString())
-            ->take(1)
-            ->first();
+            ->get();
     }
 
     /**
@@ -66,7 +74,7 @@ class EloquentMatchRepository implements MatchRepository {
      */
     public function byTeam($teamID)
     {
-        $matches = $this->model->where('home_team', '=', $teamID)
+        $matches = $this->model->with('scores')->where('home_team', '=', $teamID)
             ->orWhere('away_team', '=', $teamID)
             ->orderBy('date')->get();
 
