@@ -13,10 +13,10 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-//        $this->app->bind('NHL\Composers\NHLScheduleComposer', function($app)
-//        {
-//            return new NHLScheduleComposer($app->make('NHL\Storage\Match\MatchRepository'));
-//        });
+        $this->app->bind('NHL\Composers\NHLScheduleComposer', function($app)
+        {
+            return new NHLScheduleComposer($app->make('NHL\Storage\Match\MatchRepository'));
+        });
     }
 
     public function boot()
