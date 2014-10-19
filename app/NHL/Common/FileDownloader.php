@@ -1,12 +1,12 @@
 <?php
 
-namespace NHL\Schedule;
+namespace NHL\Common;
 
 use Illuminate\Cache\Repository as CacheRepository;
 use Illuminate\Config\Repository as ConfigRepository;
 use GuzzleHttp\Client;
 
-class ScheduleDownloader {
+class FileDownloader {
 
     /**
      * @var ConfigRepository
@@ -42,7 +42,7 @@ class ScheduleDownloader {
 
         if ( ! $this->cache->has($url) || $cacheLength === false)
         {
-            $request  = $this->client->createRequest('GET', $url);
+            $request  = $this->client->createRequest('GET', $url, ['timeout' => 20]);
             $response = $this->client->send($request);
             $body     = (string) $response->getBody();
 
