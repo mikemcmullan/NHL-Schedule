@@ -103,7 +103,30 @@ class EloquentMatchRepository implements MatchRepository {
 
         $mysqlFormat = $date->toDateString();
 
-        return $this->model->whereRaw("DATE(date) = '{$mysqlFormat}'")->orderBy('date')->get();
+        return $this->model->with('scores')->whereRaw("DATE(date) = '{$mysqlFormat}'")->orderBy('date')->get();
+    }
+
+    public function inProgress()
+    {
+        $today = $this->today();
+        $date = $this->config->get('nhl.currentDateTime');
+
+        if ($today)
+        {
+            return $today->filter(function($value) use($date)
+            {
+                $isGameInProgress = $date > $value->date && $date->diffInMinutes($value->date) <= 180;
+
+                if ( ! $isGameInProgress && ! $value->scores->isEmpty() && $value->scores->first()->game_status === 'progress')
+                {
+                    return true;
+                }
+
+                return $isGameInProgress;
+            });
+        }
+
+        return;
     }
 
     /**
