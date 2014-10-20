@@ -55,7 +55,9 @@ class UpdateScoreboardCommand extends Command {
 	{
 		try
 		{
-			if ($inProgress = $this->matchRepo->inProgress())
+			$inProgress = $this->matchRepo->inProgress();
+
+			if ( ! $inProgress->isEmpty())
 			{
 				$this->scoreboardImporter->byDay($inProgress->first()->date);
 				$this->info('Scoreboard updated.');
