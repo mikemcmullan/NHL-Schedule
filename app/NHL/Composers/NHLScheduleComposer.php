@@ -21,7 +21,9 @@ class NHLScheduleComposer {
 
     public function compose($view)
     {
-        $matches = $this->matchRepo->today();
+        $date = \Route::input('date');
+
+        $matches = ! $date ? $this->matchRepo->today() : $this->matchRepo->byDate($date);
 
         $view->with('schedule', ! $matches->isEmpty() ? $matches : []);
     }
