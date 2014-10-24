@@ -4,7 +4,6 @@ namespace NHL\Storage\Match;
 
 use Carbon\Carbon;
 use Illuminate\Config\Repository as ConfigRepository;
-use DB;
 use Match;
 use NHL\Exceptions\NonExistentTeamException;
 
@@ -57,11 +56,13 @@ class EloquentMatchRepository implements MatchRepository {
      */
     public function get($teamId, Carbon $matchDate)
     {
+        $mysqlFormat = $matchDate->toDateString();
+
         return $this->model->with('scores')->where(function($query) use($teamId)
         {
             $query->whereIn('home_team', (array) $teamId)
                 ->orWhereIn('away_team', (array) $teamId);
-        })->where(DB::raw('DATE(date)'), '=', $matchDate->toDateString())
+        })->whereRaw("DATE(date) = '{$mysqlFormat}'")
             ->get();
     }
 
@@ -101,11 +102,14 @@ class EloquentMatchRepository implements MatchRepository {
             $date = $date->subDay();
         }
 
-        $mysqlFormat = $date->toDateString();
-
-        return $this->model->with('scores')->whereRaw("DATE(date) = '{$mysqlFormat}'")->orderBy('date')->get();
+        return $this->byDate($date);
     }
 
+    /**
+     * Get all matches that are considered in progress.
+     *
+     * @return mixed
+     */
     public function inProgress()
     {
         $today = $this->today();
@@ -135,6 +139,19 @@ class EloquentMatchRepository implements MatchRepository {
     public function all()
     {
         return $this->model->all();
+    }
+
+    /**
+     * Get all matches for a specific date.
+     *
+     * @param $date
+     * @return mixed
+     */
+    public function byDate(Carbon $date)
+    {
+        $mysqlFormat = $date->toDateString();
+
+        return $this->model->with('scores')->whereRaw("DATE(date) = '{$mysqlFormat}'")->orderBy('date')->get();
     }
 
 }
