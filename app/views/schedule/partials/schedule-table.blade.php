@@ -17,11 +17,18 @@
     <div class="schedule-row">
 
         <div class="no-games">
-            No Games Scheduled For Today
+            No Games Scheduled.
         </div>
 
     </div>
 
     @endforelse
+
+    @if (isset($date))
+    <footer class="schedule-footer schedule-row">
+        <div class="previous-day"><span>{{ link_to_route('schedule_date_path', 'Previous Day', [$prevDate]) }}</span></div>
+        <div class="next-day"><span>{{ link_to_route('schedule_date_path', 'Next Day', [$nextDate]) }}</span></div>
+    </footer>
+    @endif
 
 </div>
