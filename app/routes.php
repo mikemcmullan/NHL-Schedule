@@ -21,19 +21,20 @@ Route::pattern('date', '[\d]{4}-[\d]{2}-[\d]{2}');
 
 Route::bind('date', function($value, $route)
 {
-    try
-    {
-        return \Carbon\Carbon::parse($value);
-    }
-    catch(Exception $e)
-    {
-        App::abort(404);
-    }
+    try { return \Carbon\Carbon::parse($value); }
+    catch(Exception $e) { App::abort(404); }
 });
 
-Route::get('{date}', [function(\Carbon\Carbon $date)
-{
-    $divisions = Config::get('nhl.conferences');
+Route::get('{date}', [
+    'as' => 'schedule_date_path',
+    'uses' => function(\Carbon\Carbon $date)
+    {
+        $divisions = Config::get('nhl.conferences');
 
-    return View::make('home')->withDivisions($divisions);
-}]);
+        return View::make('home')
+            ->withDivisions($divisions)
+            ->withDate($date->format('l F jS Y'));
+    }
+]);
+
+
