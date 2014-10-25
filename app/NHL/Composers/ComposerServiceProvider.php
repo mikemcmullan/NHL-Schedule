@@ -21,6 +21,6 @@ class ComposerServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->app['view']->composer('schedule.partials.today', 'NHL\Composers\NHLScheduleComposer');
+        $this->app['view']->composer('schedule.partials.schedule-table', 'NHL\Composers\NHLScheduleComposer');
     }
 }

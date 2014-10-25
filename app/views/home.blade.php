@@ -7,10 +7,10 @@ Select Your Team &#8250; 2014 - 2015 NHL Schedule Viewer
 @section('content')
 <header class="page-header">
     <h1>2014 - 2015 NHL Schedule Viewer</h1>
-    <h2>Today's Matches</h2>
+    <h2>Matches for {{ $date or 'Today' }}</h2>
 </header>
 
-@include('schedule.partials.today')
+@include('schedule.partials.schedule-table')
 
 <div class="page-sub-header">
     <h2>Or Select Your Team</h2>
