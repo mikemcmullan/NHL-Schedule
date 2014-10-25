@@ -2,6 +2,7 @@
 
 namespace NHL\Composers;
 
+use Carbon\Carbon;
 use NHL\Storage\Match\MatchRepository;
 
 class NHLScheduleComposer {
@@ -23,7 +24,19 @@ class NHLScheduleComposer {
     {
         $date = \Route::input('date');
 
-        $matches = ! $date ? $this->matchRepo->today() : $this->matchRepo->byDate($date);
+        if ( ! $date)
+        {
+            $matches = $this->matchRepo->today();
+            $date = Carbon::now();
+        }
+        else
+        {
+            $matches = $this->matchRepo->byDate($date);
+        }
+
+        $view->with('date', $date);
+        $view->with('nextDate', $date->copy()->addDay()->toDateString());
+        $view->with('prevDate', $date->copy()->subDay()->toDateString());
 
         $view->with('schedule', ! $matches->isEmpty() ? $matches : []);
     }
