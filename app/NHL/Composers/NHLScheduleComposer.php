@@ -3,6 +3,7 @@
 namespace NHL\Composers;
 
 use Carbon\Carbon;
+use Illuminate\Config\Repository as ConfigRepository;
 use NHL\Storage\Match\MatchRepository;
 
 class NHLScheduleComposer {
@@ -13,11 +14,18 @@ class NHLScheduleComposer {
     private $matchRepo;
 
     /**
-     * @param MatchRepository $matchRepo
+     * @var ConfigRepository
      */
-    public function __construct(MatchRepository $matchRepo)
+    private $config;
+
+    /**
+     * @param MatchRepository $matchRepo
+     * @param ConfigRepository $config
+     */
+    public function __construct(MatchRepository $matchRepo, ConfigRepository $config)
     {
         $this->matchRepo = $matchRepo;
+        $this->config = $config;
     }
 
     public function compose($view)
@@ -27,7 +35,7 @@ class NHLScheduleComposer {
         if ( ! $date)
         {
             $matches = $this->matchRepo->today();
-            $date = Carbon::now();
+            $date = $this->config->get('nhl.currentDateTime');
         }
         else
         {

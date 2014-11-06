@@ -97,11 +97,6 @@ class EloquentMatchRepository implements MatchRepository {
     {
         $date = $this->config->get('nhl.currentDateTime');
 
-        if ($date->hour < 2)
-        {
-            $date = $date->subDay();
-        }
-
         return $this->byDate($date);
     }
 
