@@ -2,7 +2,7 @@
 
 use Carbon\Carbon;
 
-return [
+$config = [
 
     /*
     |--------------------------------------------------------------------------
@@ -15,17 +15,6 @@ return [
     |
     */
     'scheduleCacheLength' => false,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Current Date & Time
-    |--------------------------------------------------------------------------
-    |
-    | Since we use the current date & time in a few places; to make testing
-    | easier set it here. An instance of Carbon must be used.
-    |
-    */
-    'currentDateTime' => Carbon::now(),
 
     /*
     |--------------------------------------------------------------------------
@@ -105,3 +94,28 @@ return [
     ]
 
 ];
+
+/*
+|--------------------------------------------------------------------------
+| Current Date & Time
+|--------------------------------------------------------------------------
+|
+| Since we use the current date & time in a few places; to make testing
+| easier set it here. An instance of Carbon must be used.
+|
+| Didn't know where else to put this logic; pretend it's yesterday if the
+| current hour is 2 am or less.
+|
+*/
+if (Carbon::now()->hour < 2)
+{
+    $yesterday = Carbon::now()->subDay();
+
+    $config['currentDateTime'] = Carbon::create($yesterday->year, $yesterday->month, $yesterday->day, 23, 59);
+}
+else
+{
+    $config['currentDateTime'] = Carbon::now();
+}
+
+return $config;
