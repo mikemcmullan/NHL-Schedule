@@ -125,6 +125,7 @@ return array(
 		'NHL\Schedule\ScheduleServiceProvider',
 		'NHL\Scoreboard\ScoreboardServiceProvider',
         'NHL\Storage\StorageServiceProvider',
+		'NHL\Team\TeamServiceProvider',
 		'NHL\Composers\ComposerServiceProvider'
 
 	),
