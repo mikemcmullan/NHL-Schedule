@@ -34,6 +34,11 @@ class EloquentScoreRepository implements ScoreRepository {
         $this->matchRepo = $matchRepo;
     }
 
+    /**
+     * @param $matchId
+     * @param $score
+     * @return mixed
+     */
     public function saveScoreToMatch($matchId, $score)
     {
         $this->guardScore($score);
@@ -43,6 +48,10 @@ class EloquentScoreRepository implements ScoreRepository {
         return $match->scores()->saveMany($score);
     }
 
+    /**
+     * @param $matchId
+     * @param $score
+     */
     public function updateMatchScore($matchId, $score)
     {
         $this->guardScore($score);
