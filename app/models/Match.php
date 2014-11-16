@@ -24,4 +24,16 @@ class Match extends Eloquent {
         return Carbon::parse($value);
     }
 
+    public function getWinningTeam()
+    {
+        if ($this->scores->isEmpty())
+        {
+            return;
+        }
+
+        $scores = array_fetch($this->scores->toArray(), 'score');
+
+        return $this->scores->get(array_search(max($scores), $scores));
+    }
+
 } 
