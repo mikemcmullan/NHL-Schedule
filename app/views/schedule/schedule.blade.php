@@ -6,7 +6,7 @@ NHL {{ $teamName }} Schedule &#8250; 2014 - 2015 NHL Schedule Viewer
 
 @section('content')
 <header class="page-header">
-    <h1>{{ $teamName }} 2014 - 2015 Schedule</h1>
+    <h1>{{ link_to_route('home_path', "{$teamName} 2014 - 2015 Schedule") }}</h1>
 </header>
 
 <div class="schedule-wrap">
