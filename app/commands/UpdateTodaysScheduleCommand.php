@@ -6,7 +6,7 @@ use NHL\Storage\Match\MatchRepository;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class UpdateTodaysSchedule extends Command {
+class UpdateTodaysScheduleCommand extends Command {
 
 	/**
 	 * The console command name.
