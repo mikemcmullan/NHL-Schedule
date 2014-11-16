@@ -6,16 +6,14 @@ use NHL\Schedule\ScheduleSorter;
 
 class TeamController extends BaseController {
 
-    private $matchRepository;
     /**
-     * @var \NHL\Schedule\ScheduleSorter
+     * @var \NHL\Team\Factory
      */
-    private $scheduleSorter;
+    private $team;
 
-    public function __construct(MatchRepository $matchRepository, ScheduleSorter $scheduleSorter)
+    public function __construct(NHL\Team\Factory $team)
     {
-        $this->matchRepository = $matchRepository;
-        $this->scheduleSorter = $scheduleSorter;
+        $this->team = $team;
     }
 
     public function team($id = 'TOR')
@@ -27,7 +25,7 @@ class TeamController extends BaseController {
     {
         try
         {
-            $sortedSchedule = $this->scheduleSorter->sort($this->matchRepository->byTeam($teamID));
+            $sortedSchedule = Team::make($teamID)->schedule(true);
         } 
         catch (NonExistentTeamException $e) 
         {
