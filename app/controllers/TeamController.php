@@ -25,7 +25,10 @@ class TeamController extends BaseController {
     {
         try
         {
-            $sortedSchedule = Team::make($teamID)->schedule(true);
+            $team = Team::make($teamID);
+
+            $sortedSchedule = $team->schedule(true);
+            $colours = $team->colours();
         } 
         catch (NonExistentTeamException $e) 
         {
@@ -34,7 +37,8 @@ class TeamController extends BaseController {
 
         return View::make('schedule.schedule')
             ->with('schedule', $sortedSchedule)
-            ->with('teamName', getTeamName($teamID));
+            ->with('teamName', getTeamName($teamID))
+            ->with('colours', $colours);
     }
 
 }
