@@ -27,12 +27,9 @@ function getTeamID($teamName)
 
     foreach ($teams as $id => $team) 
     {
-        foreach($team as $teamN)
+        if (stripos($team['short'], $teamName) !== false || stripos($team['long'], $teamName) !== false)
         {
-            if (stripos($teamN, $teamName) !== false)
-            {
-                return $id;
-            }
+            return $id;
         }
     }
 }
@@ -46,7 +43,7 @@ function getTeamName($teamID)
 {
     $teams = Config::get('nhl.teams');
 
-    return head(array_get($teams, $teamID));
+    return array_get($teams, $teamID)['long'];
 }
 
 /**
@@ -58,7 +55,7 @@ function getTeamShortName($teamID)
 {
     $teams = Config::get('nhl.teams');
 
-    return last(array_get($teams, $teamID));
+    return array_get($teams, $teamID)['short'];
 }
 
 /**
