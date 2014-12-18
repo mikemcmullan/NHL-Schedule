@@ -31,7 +31,7 @@ class Factory {
             throw new NonExistentTeamException;
         }
 
-        $team = new Team($teamId, $team[0], $team[1]);
+        $team = new Team($teamId, $team['long'], $team['short'], $team['colours']);
         $team->setContainer($this->container);
 
         return $team;

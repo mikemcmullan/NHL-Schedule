@@ -27,15 +27,22 @@ class Team
     private $teamShortName;
 
     /**
+     * @var array
+     */
+    private $colours;
+
+    /**
      * @param $teamId
      * @param $teamLongName
      * @param $teamShortName
+     * @param array $colours
      */
-    public function __construct($teamId, $teamLongName, $teamShortName)
+    public function __construct($teamId, $teamLongName, $teamShortName, array $colours)
     {
         $this->teamId = $teamId;
         $this->teamLongName = $teamLongName;
         $this->teamShortName = $teamShortName;
+        $this->colours = $colours;
     }
 
     /**
@@ -68,6 +75,22 @@ class Team
     public function getTeamShortName()
     {
         return $this->teamShortName;
+    }
+
+    /**
+     * @return array
+     */
+    public function getTeamColours()
+    {
+        return $this->colours;
+    }
+
+    /**
+     *
+     */
+    public function colours()
+    {
+        return new Colours($this->colours);
     }
 
     /**

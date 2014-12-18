@@ -44,37 +44,302 @@ $config = [
     |--------------------------------------------------------------------------
     */
     'teams' => [
-        'ANA' => ['Anaheim Ducks', 'Anaheim'],
-        'ARI' => ['Arizona Coyotes', 'Arizona'],
-        'PHX' => ['Phoenix Coyotes', 'Phoenix'],
-        'BOS' => ['Boston Bruins', 'Boston'],
-        'BUF' => ['Buffalo Sabres', 'Buffalo'],
-        'CGY' => ['Calgary Flames', 'Calgary'],
-        'CAR' => ['Carolina Hurricanes', 'Carolina'],
-        'CHI' => ['Chicago Blackhawks', 'Chicago'],
-        'COL' => ['Colorado Avalanche', 'Colorado'],
-        'CBJ' => ['Columbus Blue Jackets', 'Columbus'],
-        'DAL' => ['Dallas Stars', 'Dallas'],
-        'DET' => ['Detroit Red Wings', 'Detroit'],
-        'EDM' => ['Edmonton Oilers', 'Edmonton'],
-        'FLA' => ['Florida Panthers', 'Florida'],
-        'LAK' => ['Los Angeles Kings', 'Los Angeles'],
-        'MIN' => ['Minnesota Wild', 'Minnesota'],
-        'MTL' => ['Montréal Canadiens', 'Montréal'],
-        'NSH' => ['Nashville Predators', 'Nashville'],
-        'NJD' => ['New Jersey Devils', 'New Jersey'],
-        'NYI' => ['New York Islanders', 'NY Islanders'],
-        'NYR' => ['New York Rangers', 'NY Rangers'],
-        'OTT' => ['Ottawa Senators', 'Ottawa'],
-        'PHI' => ['Philadelphia Flyers', 'Philadelphia'],
-        'PIT' => ['Pittsburgh Penguins', 'Pittsburgh'],
-        'SJS' => ['San Jose Sharks', 'San Jose'],
-        'STL' => ['St. Louis Blues', 'St. Louis'],
-        'TBL' => ['Tampa Bay Lightning', 'Tampa Bay'],
-        'TOR' => ['Toronto Maple Leafs', 'Toronto'],
-        'VAN' => ['Vancouver Canucks', 'Vancouver'],
-        'WSH' => ['Washington Capitals', 'Washington'],
-        'WPG' => ['Winnipeg Jets', 'Winnipeg']
+        'ANA' => [
+            'long' => 'Anaheim Ducks',
+            'short' => 'Anaheim',
+            'colours' => [
+                '#000000',
+                '#91764B',
+                '#EF5225'
+            ]
+        ],
+        'ARI' => [
+            'long' => 'Arizona Coyotes',
+            'short' => 'Arizona',
+            'colours' => [
+                '#841F27',
+                '#000000',
+                '#EFE1C6',
+                '#FFFFFF'
+            ]
+        ],
+        'PHX' => [
+            'long' => 'Phoenix Coyotes',
+            'short' => 'Phoenix',
+            'colours' => [
+                '#841F27',
+                '#000000',
+                '#EFE1C6',
+                '#FFFFFF'
+            ]
+        ],
+        'BOS' => [
+            'long' => 'Boston Bruins',
+            'short' => 'Boston',
+            'colours' => [
+                '#000000',
+                '#FFC422',
+                '#FFFFFF'
+            ]
+        ],
+        'BUF' => [
+            'long' => 'Buffalo Sabres',
+            'short' => 'Buffalo',
+            'colours' => [
+                '#002E62',
+                '#FDBB2F',
+                '#AEB6B9',
+                '#FFFFFF'
+            ]
+        ],
+        'CGY' => [
+            'long' => 'Calgary Flames',
+            'short' => 'Calgary',
+            'colours' => [
+                '#E03A3E',
+                '#FFC758',
+                '#000000',
+                '#FFFFFF'
+            ]
+        ],
+        'CAR' => [
+            'long' => 'Carolina Hurricanes',
+            'short' => 'Carolina',
+            'colours' => [
+                '#E03A3E',
+                '#000000',
+                '#8E8E90',
+                '#FFFFFF'
+            ]
+        ],
+        'CHI' => [
+            'long' => 'Chicago Blackhawks',
+            'short' => 'Chicago',
+            'colours' => [
+                '#E3263A',
+                '#000000',
+                '#FFFFFF'
+            ]
+        ],
+        'COL' => [
+            'long' => 'Colorado Avalanche',
+            'short' => 'Colorado',
+            'colours' => [
+                '#8B2942',
+                '#01548A',
+                '#000000',
+                '#A9B0B8',
+                '#FFFFFF'
+            ]
+        ],
+        'CBJ' => [
+            'long' => 'Columbus Blue Jackets',
+            'short' => 'Columbus',
+            'colours' => [
+                '#00285C',
+                '#E03A3E',
+                '#A9B0B8',
+                '#FFFFFF'
+            ]
+        ],
+        'DAL' => [
+            'long' => 'Dallas Stars',
+            'short' => 'Dallas',
+            'colours' => [
+                '#006A4E',
+                '#000000',
+                '#FFFFFF',
+                '#C0C0C0'
+            ]
+        ],
+        'DET' => [
+            'long' => 'Detroit Red Wings',
+            'short' => 'Detroit',
+            'colours' => [
+                '#EC1F26',
+                '#FFFFFF'
+            ]
+        ],
+        'EDM' => [
+            'long' => 'Edmonton Oilers',
+            'short' => 'Edmonton',
+            'colours' => [
+                '#003777',
+                '#E66A20',
+                '#FFFFFF'
+            ]
+        ],
+        'FLA' => [
+            'long' => 'Florida Panthers',
+            'short' => 'Florida',
+            'colours' => [
+                '#C8213F',
+                '#002E5F',
+                '#D59C05',
+                '#FFFFFF'
+            ]
+        ],
+        'LAK' => [
+            'long' => 'Los Angeles Kings',
+            'short' => 'Los Angeles',
+            'colours' => [
+                '#000000',
+                '#FFFFFF',
+                '#AFB7BA'
+            ]
+        ],
+        'MIN' => [
+            'long' => 'Minnesota Wild',
+            'short' => 'Minnesota',
+            'colours' => [
+                '#025736',
+                '#BF2B37',
+                '#EFB410',
+                '#EEE3C7',
+                '#FFFFFF'
+            ]
+        ],
+        'MTL' => [
+            'long' => 'Montréal Canadiens',
+            'short' => 'Montréal',
+            'colours' => [
+                '#BF2F38',
+                '#FFFFFF',
+                '#213770'
+            ]
+        ],
+        'NSH' => [
+            'long' => 'Nashville Predators',
+            'short' => 'Nashville',
+            'colours' => [
+                '#FDBB2F',
+                '#002E62',
+                '#FFFFFF'
+            ]
+        ],
+        'NJD' => [
+            'long' => 'New Jersey Devils',
+            'short' => 'New Jersey',
+            'colours' => [
+                '#E03A3E',
+                '#000000',
+                '#FFFFFF'
+            ]
+        ],
+        'NYI' => [
+            'long' => 'New York Islanders',
+            'short' => 'NY Islanders',
+            'colours' => [
+                '#00529B',
+                '#F57D31',
+                '#FFFFFF'
+            ]
+        ],
+        'NYR' => [
+            'long' => 'New York Rangers',
+            'short' => 'NY Rangers',
+            'colours' => [
+                '#0161AB',
+                '#E6393F',
+                '#FFFFFF'
+            ]
+        ],
+        'OTT' => [
+            'long' => 'Ottawa Senators',
+            'short' => 'Ottawa',
+            'colours' => [
+                '#E4173E',
+                '#000000',
+                '#D69F0F',
+                '#FFFFFF'
+            ]
+        ],
+        'PHI' => [
+            'long' => 'Philadelphia Flyers',
+            'short' => 'Philadelphia',
+            'colours' => [
+                '#F47940',
+                '#000000',
+                '#FFFFFF'
+            ]
+        ],
+        'PIT' => [
+            'long' => 'Pittsburgh Penguins',
+            'short' => 'Pittsburgh',
+            'colours' => [
+                '#000000',
+                '#D1BD80',
+                '#FFFFFF'
+            ]
+        ],
+        'SJS' => [
+            'long' => 'San Jose Sharks',
+            'short' => 'San Jose',
+            'colours' => [
+                '#05535D',
+                '#F38F20',
+                '#000000',
+                '#FFFFFF'
+            ]
+        ],
+        'STL' => [
+            'long' => 'St. Louis Blues',
+            'short' => 'St. Louis',
+            'colours' => [
+                '#0546A0',
+                '#FFC325',
+                '#101F48',
+                '#FFFFFF'
+            ]
+        ],
+        'TBL' => [
+            'long' => 'Tampa Bay Lightning',
+            'short' => 'Tampa Bay',
+            'colours' => [
+                '#013E7D',
+                '#FFFFFF',
+                '#000000',
+                '#C0C0C0'
+            ]
+        ],
+        'TOR' => [
+            'long' => 'Toronto Maple Leafs',
+            'short' => 'Toronto',
+            'colours' => [
+                '#003777',
+                '#FFFFFF'
+            ]
+        ],
+        'VAN' => [
+            'long' => 'Vancouver Canucks',
+            'short' => 'Vancouver',
+            'colours' => [
+                '#07346F',
+                '#047A4A',
+                '#A8A9AD',
+                '#FFFFFF'
+            ]
+        ],
+        'WSH' => [
+            'long' => 'Washington Capitals',
+            'short' => 'Washington',
+            'colours' => [
+                '#CF132B',
+                '#00214E',
+                '#FFFFFF',
+                '#000000'
+            ]
+        ],
+        'WPG' => [
+            'long' => 'Winnipeg Jets',
+            'short' => 'Winnipeg',
+            'colours' => [
+                '#002E62',
+                '#FFFFFF',
+                '#0168AB',
+                '#A8A9AD'
+            ]
+        ]
     ],
 
     /*
