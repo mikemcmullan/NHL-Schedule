@@ -1,4 +1,4 @@
-<div class="schedule-row{{ isset($match['nextGame']) ? ' next-game' : '' }}{{ isCollapsed($match) ? ' collapsed' : '' }}"{{ isset($yearMonth) ? ' data-month="' . $yearMonth . '"' : ''  }}>
+<div class="schedule-row{{ isset($match['nextGame']) ? ' next-game' : '' }}{{ isset($yearMonth) ? isCollapsed($match) : '' }}"{{ isset($yearMonth) ? ' data-month="' . $yearMonth . '"' : ''  }}>
 
     <div class="date"><span>{{ $match['date']->format('D\, M jS\, Y') }}</span></div>
 
