@@ -40,10 +40,11 @@ class ScoreboardMapper implements ScoreboardImporterInterface {
                     'shots_on_goal' => array_get($game, 'atsog')
                 ],
 
-                'status' => array_get($game, 'bsc'),
-                'shootout' => $shootout,
-                'overtime' => $overtime,
-                'date' => $date
+                'status'    => array_get($game, 'bsc'),
+                'time'      => array_get($game, 'bs'),
+                'shootout'  => $shootout,
+                'overtime'  => $overtime,
+                'date'      => $date
             ];
         });
     }

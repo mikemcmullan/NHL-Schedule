@@ -67,18 +67,20 @@ class ScoreboardDBImporter implements ScoreboardImporter {
     {
         $score = [
             new Score([
-                'team_id' => $game['home']['team_id'],
-                'score' => $game['home']['score'],
-                'shootout' => $game['shootout'],
-                'overtime' => $game['overtime'],
-                'game_status' => $game['status']
+                'team_id'       => $game['home']['team_id'],
+                'score'         => $game['home']['score'],
+                'shootout'      => $game['shootout'],
+                'overtime'      => $game['overtime'],
+                'game_status'   => $game['status'],
+                'game_time'     => $game['time']
             ]),
             new Score([
-                'team_id' => $game['away']['team_id'],
-                'score' => $game['away']['score'],
-                'shootout' => $game['shootout'],
-                'overtime' => $game['overtime'],
-                'game_status' => $game['status']
+                'team_id'       => $game['away']['team_id'],
+                'score'         => $game['away']['score'],
+                'shootout'      => $game['shootout'],
+                'overtime'      => $game['overtime'],
+                'game_status'   => $game['status'],
+                'game_time'     => $game['time']
             ])
         ];
 

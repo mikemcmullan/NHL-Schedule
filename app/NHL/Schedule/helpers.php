@@ -67,23 +67,55 @@ function getTeamShortName($teamID)
  * @param $match
  * @return string
  */
-function presentScores($match)
+function presentScores(Match $match)
 {
-    $template = '%s %s (%d) - %s (%s) %s';
+    $template = '%s (%d) - %s (%s)';
 
     $team1 = $match['scores']->first();
     $team2 = $match['scores']->last();
-    $status = $team1->game_status === 'final' ? 'FINAL:' : '';
-    $extra = '';
 
-    if ($team1->shootout)
+    return sprintf($template, $team1->team_id, $team1->score, $team2->team_id, $team2->score);
+}
+
+/**
+ * @param Match $match
+ * @return string
+ */
+function presentTime(Match $match)
+{
+    if (hasMatchStarted($match['date']) ||  $match['scores']->isEmpty())
     {
-        $extra = 'SO';
-    }
-    elseif ($team1->overtime)
-    {
-        $extra = 'OT';
+        return $match['date']->format('g:i A');
     }
 
-    return sprintf($template, $status, $team1->team_id, $team1->score, $team2->team_id, $team2->score, $extra);
+    $score = $match['scores']->first();
+
+    if ($score->game_status === 'progress')
+    {
+        return strtoupper($score->game_time);
+    }
+
+    $output = $score->game_status;
+
+    if ($score->overtime == 1)
+    {
+        $output .= ' OT';
+    }
+    else if($score->shootout == 1)
+    {
+        $output .= ' SO';
+    }
+
+    return strtoupper($output);
+}
+
+/**
+ * Has a match started.
+ *
+ * @param Carbon $date
+ * @return bool
+ */
+function hasMatchStarted(Carbon $date)
+{
+    return Config::get('nhl.currentDateTime')->diffInMinutes($date, false) >= 0;
 }

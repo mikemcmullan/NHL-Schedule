@@ -12,7 +12,7 @@
         <span class="team-id">{{ link_to_route('team_schedule_path', $match['home_team'], [$match['home_team']]) }}</span>
     </div>
 
-    <div class="time"><span>{{ $match['date']->format('g:i A') }}</span></div>
+    <div class="time"><span>{{ presentTime($match) }}</span></div>
 
     @if ($match['scores']->isEmpty())
     <div class="results"><span>{{ $match['tv_info'] }}</span></div>

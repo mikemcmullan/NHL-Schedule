@@ -64,7 +64,8 @@ class EloquentScoreRepository implements ScoreRepository {
                     'score' => $s->getScore(),
                     'shootout' => $s->getShootout(),
                     'overtime' => $s->getOvertime(),
-                    'game_status' => $s->getGameStatus()
+                    'game_status' => $s->getGameStatus(),
+                    'game_time' => $s->getGameTime()
                 ]);
         }
     }

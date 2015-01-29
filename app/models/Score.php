@@ -7,7 +7,7 @@ class Score extends Eloquent {
     /**
      * @var array
      */
-    protected $fillable = ['match_id', 'team_id', 'score', 'overtime', 'shootout', 'game_status'];
+    protected $fillable = ['match_id', 'team_id', 'score', 'overtime', 'shootout', 'game_status', 'game_time'];
 
     public function match()
     {
@@ -37,6 +37,11 @@ class Score extends Eloquent {
     public function getGameStatus()
     {
         return $this->game_status;
+    }
+
+    public function getGameTime()
+    {
+        return $this->game_time;
     }
 
 }
