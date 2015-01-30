@@ -83,7 +83,7 @@ function presentScores(Match $match)
  */
 function presentTime(Match $match)
 {
-    if (hasMatchStarted($match['date']) ||  $match['scores']->isEmpty())
+    if ( ! hasMatchStarted($match['date']) ||  $match['scores']->isEmpty())
     {
         return $match['date']->format('g:i A');
     }
@@ -117,5 +117,5 @@ function presentTime(Match $match)
  */
 function hasMatchStarted(Carbon $date)
 {
-    return Config::get('nhl.currentDateTime')->diffInMinutes($date, false) >= 0;
+    return $date->diffInMinutes(Config::get('nhl.currentDateTime'), false) >= 0;
 }
