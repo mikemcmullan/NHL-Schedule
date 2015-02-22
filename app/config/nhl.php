@@ -47,6 +47,7 @@ $config = [
         'ANA' => [
             'long' => 'Anaheim Ducks',
             'short' => 'Anaheim',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/ducks_logo.svgz?v=8.19',
             'colours' => [
                 '#000000',
                 '#91764B',
@@ -56,6 +57,7 @@ $config = [
         'ARI' => [
             'long' => 'Arizona Coyotes',
             'short' => 'Arizona',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/coyotes_logo.svgz?v=8.19',
             'colours' => [
                 '#841F27',
                 '#000000',
@@ -66,6 +68,7 @@ $config = [
         'PHX' => [
             'long' => 'Phoenix Coyotes',
             'short' => 'Phoenix',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/coyotes_logo.svgz?v=8.19',
             'colours' => [
                 '#841F27',
                 '#000000',
@@ -76,6 +79,7 @@ $config = [
         'BOS' => [
             'long' => 'Boston Bruins',
             'short' => 'Boston',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/bruins_logo.svgz?v=8.19',
             'colours' => [
                 '#000000',
                 '#FFC422',
@@ -85,6 +89,7 @@ $config = [
         'BUF' => [
             'long' => 'Buffalo Sabres',
             'short' => 'Buffalo',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/sabres_logo.svgz?v=8.19',
             'colours' => [
                 '#002E62',
                 '#FDBB2F',
@@ -95,6 +100,7 @@ $config = [
         'CGY' => [
             'long' => 'Calgary Flames',
             'short' => 'Calgary',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/flames_dark_logo.svgz?v=8.19',
             'colours' => [
                 '#E03A3E',
                 '#FFC758',
@@ -105,6 +111,7 @@ $config = [
         'CAR' => [
             'long' => 'Carolina Hurricanes',
             'short' => 'Carolina',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/hurricanes_logo.svgz?v=8.19',
             'colours' => [
                 '#E03A3E',
                 '#000000',
@@ -115,6 +122,7 @@ $config = [
         'CHI' => [
             'long' => 'Chicago Blackhawks',
             'short' => 'Chicago',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/blackhawks_logo.svgz?v=8.19',
             'colours' => [
                 '#E3263A',
                 '#000000',
@@ -124,6 +132,7 @@ $config = [
         'COL' => [
             'long' => 'Colorado Avalanche',
             'short' => 'Colorado',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/avalanche_logo.svgz?v=8.19',
             'colours' => [
                 '#8B2942',
                 '#01548A',
@@ -135,6 +144,7 @@ $config = [
         'CBJ' => [
             'long' => 'Columbus Blue Jackets',
             'short' => 'Columbus',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/bluejackets_logo.svgz?v=8.19',
             'colours' => [
                 '#00285C',
                 '#E03A3E',
@@ -145,6 +155,7 @@ $config = [
         'DAL' => [
             'long' => 'Dallas Stars',
             'short' => 'Dallas',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/stars_logo.svgz?v=8.19',
             'colours' => [
                 '#006A4E',
                 '#000000',
@@ -155,6 +166,7 @@ $config = [
         'DET' => [
             'long' => 'Detroit Red Wings',
             'short' => 'Detroit',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/redwings_logo.svgz?v=8.19',
             'colours' => [
                 '#EC1F26',
                 '#FFFFFF'
@@ -163,6 +175,7 @@ $config = [
         'EDM' => [
             'long' => 'Edmonton Oilers',
             'short' => 'Edmonton',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/oilers_logo.svgz?v=8.19',
             'colours' => [
                 '#003777',
                 '#E66A20',
@@ -172,6 +185,7 @@ $config = [
         'FLA' => [
             'long' => 'Florida Panthers',
             'short' => 'Florida',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/panthers_logo.svgz?v=8.19',
             'colours' => [
                 '#C8213F',
                 '#002E5F',
@@ -182,6 +196,7 @@ $config = [
         'LAK' => [
             'long' => 'Los Angeles Kings',
             'short' => 'Los Angeles',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/kings_dark_logo.svgz?v=8.19',
             'colours' => [
                 '#000000',
                 '#FFFFFF',
@@ -191,6 +206,7 @@ $config = [
         'MIN' => [
             'long' => 'Minnesota Wild',
             'short' => 'Minnesota',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/wild_logo.svgz?v=8.19',
             'colours' => [
                 '#025736',
                 '#BF2B37',
@@ -202,6 +218,7 @@ $config = [
         'MTL' => [
             'long' => 'Montréal Canadiens',
             'short' => 'Montréal',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/canadiens_logo.svgz?v=8.19',
             'colours' => [
                 '#BF2F38',
                 '#FFFFFF',
@@ -211,6 +228,7 @@ $config = [
         'NSH' => [
             'long' => 'Nashville Predators',
             'short' => 'Nashville',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/predators_logo.svgz?v=8.19',
             'colours' => [
                 '#FDBB2F',
                 '#002E62',
@@ -220,6 +238,7 @@ $config = [
         'NJD' => [
             'long' => 'New Jersey Devils',
             'short' => 'New Jersey',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/devils_logo.svgz?v=8.19',
             'colours' => [
                 '#E03A3E',
                 '#000000',
@@ -229,6 +248,7 @@ $config = [
         'NYI' => [
             'long' => 'New York Islanders',
             'short' => 'NY Islanders',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/islanders_logo.svgz?v=8.19',
             'colours' => [
                 '#00529B',
                 '#F57D31',
@@ -238,6 +258,7 @@ $config = [
         'NYR' => [
             'long' => 'New York Rangers',
             'short' => 'NY Rangers',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/rangers_logo.svgz?v=8.19',
             'colours' => [
                 '#0161AB',
                 '#E6393F',
@@ -247,6 +268,7 @@ $config = [
         'OTT' => [
             'long' => 'Ottawa Senators',
             'short' => 'Ottawa',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/senators_logo.svgz?v=8.19',
             'colours' => [
                 '#E4173E',
                 '#000000',
@@ -257,6 +279,7 @@ $config = [
         'PHI' => [
             'long' => 'Philadelphia Flyers',
             'short' => 'Philadelphia',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/flyers_dark_logo.svgz?v=8.19',
             'colours' => [
                 '#F47940',
                 '#000000',
@@ -266,6 +289,7 @@ $config = [
         'PIT' => [
             'long' => 'Pittsburgh Penguins',
             'short' => 'Pittsburgh',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/penguins_logo.svgz?v=8.19',
             'colours' => [
                 '#000000',
                 '#D1BD80',
@@ -275,6 +299,7 @@ $config = [
         'SJS' => [
             'long' => 'San Jose Sharks',
             'short' => 'San Jose',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/sharks_logo.svgz?v=8.19',
             'colours' => [
                 '#05535D',
                 '#F38F20',
@@ -285,6 +310,7 @@ $config = [
         'STL' => [
             'long' => 'St. Louis Blues',
             'short' => 'St. Louis',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/blues_dark_logo.svgz?v=8.19',
             'colours' => [
                 '#0546A0',
                 '#FFC325',
@@ -295,6 +321,7 @@ $config = [
         'TBL' => [
             'long' => 'Tampa Bay Lightning',
             'short' => 'Tampa Bay',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/lightning_dark_logo.svgz?v=8.19',
             'colours' => [
                 '#013E7D',
                 '#FFFFFF',
@@ -305,6 +332,7 @@ $config = [
         'TOR' => [
             'long' => 'Toronto Maple Leafs',
             'short' => 'Toronto',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/mapleleafs_dark_logo.svgz?v=8.19',
             'colours' => [
                 '#003777',
                 '#FFFFFF'
@@ -313,6 +341,7 @@ $config = [
         'VAN' => [
             'long' => 'Vancouver Canucks',
             'short' => 'Vancouver',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/canucks_dark_logo.svgz?v=8.19',
             'colours' => [
                 '#07346F',
                 '#047A4A',
@@ -323,6 +352,7 @@ $config = [
         'WSH' => [
             'long' => 'Washington Capitals',
             'short' => 'Washington',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/capitals_dark_logo.svgz?v=8.19',
             'colours' => [
                 '#CF132B',
                 '#00214E',
@@ -333,6 +363,7 @@ $config = [
         'WPG' => [
             'long' => 'Winnipeg Jets',
             'short' => 'Winnipeg',
+            'logo' => 'http://cdn.nhle.com/nhl/images/logos/teams/jets_logo.svgz?v=8.19',
             'colours' => [
                 '#002E62',
                 '#FFFFFF',
