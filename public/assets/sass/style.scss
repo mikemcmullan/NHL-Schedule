@@ -18,18 +18,18 @@ body {
 
 #background-stripes {
     position: absolute;
-    top: 40px;
+    top: 55px;
     left: 0;
     z-index: -1;
-    box-shadow: 0 3px 5px #000;
+    box-shadow: 0 2px 5px #000;
 }
 
 .page-wrap {
     margin: 0 auto 10px;
     padding: 0 10px;
 
-    @media (min-width: 800px) {
-        width: 800px;
+    @media (min-width: 1200px) {
+        width: 1200px;
     }
 }
 
@@ -50,10 +50,13 @@ a {
     h2 {
         color: white;
         text-align: center;
-        text-shadow: 1px 1px 0px #ababab, 
-                    2px 2px 0px #919191, 
-                    3px 3px 0px #919191, 
-                    4px 4px 3px #000;
+        font-weight: 300;
+        text-shadow: 1px 1px 3px #000;
+
+//        text-shadow: 1px 1px 0px #ababab,
+//                    2px 2px 0px #919191,
+//                    3px 3px 0px #919191,
+//                    4px 4px 3px #000;
         // margin: 15px 0 0;
 
         a {
@@ -207,13 +210,13 @@ table {
 }
 
 .schedule-wrap {
-    background: #fafafa;
+    background: #fff;
     margin: 0 auto;
     width: auto;
     color: #666;
-    text-shadow: 1px 1px 0px #fff;
-    box-shadow: 0 0 6px 1px #181818;
-    border: 2px solid #eaebec;
+//    text-shadow: 1px 1px 0px #fff;
+    box-shadow: 0 0 5px 0 #181818;
+    border: 1px solid #eaebec;
 }
 
 .schedule-header {
@@ -261,7 +264,7 @@ table {
     & > div {
         flex: 1;
         display: flex;
-        padding: 13px 0;
+        padding: 20px 0;
         border-bottom: 2px solid #eaebec;
         border-right: 2px solid #eaebec;
         text-align: center;

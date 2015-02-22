@@ -10,7 +10,7 @@ Select Your Team &#8250; 2014 - 2015 NHL Schedule Viewer
     <h2>Matches for {{ $date or 'Today' }}</h2>
 </header>
 
-@include('schedule.partials.schedule-table')
+@include('schedule.partials.schedule-table', ['columns' => ['visitor', 'home', 'time', 'results']])
 
 <div class="page-sub-header">
     <h2>Or Select Your Team</h2>

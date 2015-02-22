@@ -35,7 +35,7 @@ NHL {{ $teamName }} Schedule &#8250; 2014 - 2015 NHL Schedule Viewer
 
         @foreach ($matchGroup as $match)
 
-            @include('schedule.partials.schedule-row', ['match' => $match, 'yearMonth' => $matchGroup->first()['date']->format('Y-m')])
+            @include('schedule.partials.schedule-row', ['columns' => ['date', 'visitor', 'home', 'time', 'results'], 'match' => $match, 'yearMonth' => $matchGroup->first()['date']->format('Y-m')])
 
         @endforeach
 
