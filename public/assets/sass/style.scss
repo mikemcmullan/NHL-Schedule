@@ -221,7 +221,11 @@ table {
 
 .schedule-header {
     font-weight: bold;
-    text-align: center;
+
+    .home,
+    .visitor {
+        text-align: center !important;
+    }
 }
 
 .schedule-month-header {

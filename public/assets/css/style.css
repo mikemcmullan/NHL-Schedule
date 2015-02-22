@@ -133,8 +133,10 @@ table {
   border: 1px solid #eaebec; }
 
 .schedule-header {
-  font-weight: bold;
-  text-align: center; }
+  font-weight: bold; }
+  .schedule-header .home,
+  .schedule-header .visitor {
+    text-align: center !important; }
 
 .schedule-month-header {
   background: #012a59;
