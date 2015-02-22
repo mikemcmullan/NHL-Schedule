@@ -63,6 +63,18 @@ function getTeamShortName($teamID)
 }
 
 /**
+ * Get a teams logo from it's ID.
+ * @param $teamID
+ * @return string
+ */
+function getTeamLogo($teamID)
+{
+    $teams = Config::get('nhl.teams');
+
+    return array_get($teams, $teamID)['logo'];
+}
+
+/**
  * Format a match score into a string.
  * @param $match
  * @return string
