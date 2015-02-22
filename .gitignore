@@ -7,5 +7,7 @@ composer.lock
 .DS_Store
 Thumbs.db
 ruby
-public/.sass-cache
+.sass-cache
 .idea
+Envoy.blade.php
+config.codekit
