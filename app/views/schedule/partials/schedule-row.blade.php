@@ -6,15 +6,25 @@
 
     @if (array_search('visitor', $columns) !== false)
         <div class="visitor">
-            <span class="full-team-name">{{ link_to_route('team_schedule_path', getTeamShortName($match['away_team']), [$match['away_team']]) }}</span>
-            <span class="team-id">{{ link_to_route('team_schedule_path', $match['away_team'], [$match['away_team']]) }}</span>
+            <a href="{{ route('team_schedule_path', [$match['away_team']]) }}" class="team-logo">
+                <img src="{{ getTeamLogo($match['away_team']) }}" alt="{{ getTeamShortName($match['away_team']) }} Logo">
+            </a>
+
+            <span class="full-team-name">
+                {{ link_to_route('team_schedule_path', getTeamShortName($match['away_team']), [$match['away_team']]) }}
+            </span>
         </div>
     @endif
 
     @if (array_search('home', $columns) !== false)
         <div class="home">
-            <span class="full-team-name">{{ link_to_route('team_schedule_path', getTeamShortName($match['home_team']), [$match['home_team']]) }}</span>
-            <span class="team-id">{{ link_to_route('team_schedule_path', $match['home_team'], [$match['home_team']]) }}</span>
+            <a href="{{ route('team_schedule_path', [$match['home_team']]) }}" class="team-logo">
+                <img src="{{ getTeamLogo($match['home_team']) }}" alt="{{ getTeamShortName($match['home_team']) }} Logo">
+            </a>
+
+            <span class="full-team-name">
+                {{ link_to_route('team_schedule_path', getTeamShortName($match['home_team']), [$match['home_team']]) }}
+            </span>
         </div>
     @endif
 

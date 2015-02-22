@@ -133,7 +133,8 @@ table {
   border: 1px solid #eaebec; }
 
 .schedule-header {
-  font-weight: bold; }
+  font-weight: bold;
+  text-align: center; }
 
 .schedule-month-header {
   background: #012a59;
@@ -162,15 +163,23 @@ table {
   .schedule-row > div {
     flex: 1;
     display: flex;
-    padding: 20px 0;
+    padding: 15px 0;
     border-bottom: 2px solid #eaebec;
     border-right: 2px solid #eaebec;
-    text-align: center; }
+    position: relative; }
     .schedule-row > div > span {
       display: inline-block;
       margin-top: auto;
       margin-bottom: auto;
       width: 100%; }
+    .schedule-row > div .team-logo {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 5px;
+      margin-right: 15px; }
+      .schedule-row > div .team-logo > img {
+        width: 42px;
+        height: 28px; }
     .schedule-row > div.date {
       flex-basis: 25%;
       text-align: left;
@@ -181,23 +190,27 @@ table {
     .schedule-row > div.home {
       flex-basis: 16%; }
     .schedule-row > div.time {
-      flex-basis: 13%; }
+      flex-basis: 13%;
+      text-align: center; }
     .schedule-row > div .full-team-name {
       display: inline; }
     .schedule-row > div .team-id {
       display: none; }
     .schedule-row > div.results {
       flex-basis: 30%;
-      border-right: 0; }
+      border-right: 0;
+      text-align: center; }
     .schedule-row > div.no-games {
       padding-left: 20px; }
+    @media (max-width: 880px) {
+      .schedule-row > div .team-logo {
+        margin-left: auto;
+        margin-right: auto; }
+      .schedule-row > div .full-team-name {
+        display: none; } }
     @media (max-width: 450px) {
       .schedule-row > div.date {
-        padding-left: 10px; }
-      .schedule-row > div.home .full-team-name, .schedule-row > div.visitor .full-team-name {
-        display: none; }
-      .schedule-row > div.home .team-id, .schedule-row > div.visitor .team-id {
-        display: inline; } }
+        padding-left: 10px; } }
 
 .conference-container {
   background: #fff;
