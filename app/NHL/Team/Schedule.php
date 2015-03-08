@@ -2,7 +2,7 @@
 
 namespace NHL\Team;
 
-use NHL\Schedule\ScheduleSorter;
+use NHL\Common\ScheduleSorter;
 use NHL\Storage\Match\MatchRepository;
 
 class Schedule {
