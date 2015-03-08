@@ -7,21 +7,43 @@ class Score extends Eloquent {
     /**
      * @var array
      */
-    protected $fillable = ['match_id', 'team_id', 'score', 'overtime', 'shootout', 'game_status', 'game_time'];
+    protected $fillable = [
+        'match_id',
+        'home_team',
+        'away_team',
+        'home_score',
+        'home_sog',
+        'away_score',
+        'away_sog',
+        'overtime',
+        'shootout',
+        'game_status',
+        'game_time'
+    ];
 
     public function match()
     {
         return $this->hasOne('Match');
     }
 
-    public function getTeamId()
+    public function getHomeScore()
     {
-        return $this->team_id;
+        return $this->home_score;
     }
 
-    public function getScore()
+    public function getHomeSog()
     {
-        return $this->score;
+        return $this->home_sog;
+    }
+
+    public function getAwayScore()
+    {
+        return $this->away_score;
+    }
+
+    public function getAwaySog()
+    {
+        return $this->away_sog;
     }
 
     public function getShootout()

@@ -16,10 +16,16 @@ class CreateScoresTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('match_id');
-			$table->char('team_id', 3);
-			$table->tinyInteger('score')->default(0);
+			$table->char('home_team', 3);
+			$table->tinyInteger('home_score')->default(0);
+			$table->tinyInteger('home_sog')->default(0);
+			$table->char('away_team', 3);
+			$table->tinyInteger('away_score')->default(0);
+			$table->tinyInteger('away_sog')->default(0);
 			$table->boolean('overtime')->default(false);
 			$table->boolean('shootout')->default(false);
+			$table->string('game_status', 10)->nullable();
+			$table->string('game_time', 10)->nullable();
 			$table->timestamps();
 		});
 	}

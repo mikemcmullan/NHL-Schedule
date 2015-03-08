@@ -11,6 +11,8 @@
 |
 */
 
-Artisan::add(new ScheduleImporterCommand(App::make('NHL\Schedule\ScheduleImporter')));
-Artisan::add(new UpdateTodaysScheduleCommand(App::make('NHL\Schedule\ScheduleImporter'), App::make('NHL\Storage\Match\MatchRepository')));
-Artisan::add(new UpdateScoreboardCommand(App::make('NHL\Scoreboard\ScoreboardImporter'), App::make('NHL\Storage\Match\MatchRepository'), App::make('Illuminate\Config\Repository')));
+Artisan::add(new StandingsImporterCommand(App::make('NHL\Standings\Importer'), App::make('NHL\Storage\Match\MatchRepository'), App::make('Illuminate\Config\Repository')));
+
+Artisan::add(App::make('ScheduleImporterCommand'));
+Artisan::add(App::make('UpdateTodaysScheduleCommand'));
+Artisan::add(App::make('UpdateScoreboardCommand'));

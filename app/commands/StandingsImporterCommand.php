@@ -1,37 +1,40 @@
 <?php
 
 use Illuminate\Console\Command;
-use NHL\DataCollector\Consumers\ScheduleDatabaseConsumer;
-use NHL\DataCollector\ScheduleProvider;
-use NHL\Exceptions\NonExistentTeamException;
+use NHL\Standings\Importer;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use NHL\Schedule\ScheduleImporter;
 
-class ScheduleImporterCommand extends Command {
+class StandingsImporterCommand extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'nhl:import-schedule';
+	protected $name = 'nhl:importStandings';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Import a teams schedule by season.';
+	protected $description = 'Import league standings.';
+
+    /**
+     * @var \NHL\Standings\Importer
+     */
+    private $importer;
 
 	/**
 	 * Create a new command instance.
 	 *
-	 * @return \ScheduleImporterCommand
+	 * @param Importer $importer
 	 */
-	public function __construct()
+	public function __construct(Importer $importer)
 	{
 		parent::__construct();
+        $this->importer = $importer;
     }
 
 	/**
@@ -41,20 +44,15 @@ class ScheduleImporterCommand extends Command {
 	 */
 	public function fire()
 	{
-		$teamId = $this->argument('teamId');
+		$type = $this->argument('type');
 
         try
         {
-	        $provider = App::make(ScheduleProvider::class);
-	        $provider->setTeam($teamId);
-	        $provider->addConsumer(
-		        App::make(ScheduleDatabaseConsumer::class, ['team' => $teamId])
-	        );
-	        $provider->execute();
+            var_dump($this->importer->all($type));
         }
         catch(NonExistentTeamException $e)
         {
-            $this->error('Invalid Team ID');
+            $this->error($e->getMessage());
         }
 	}
 
@@ -65,9 +63,9 @@ class ScheduleImporterCommand extends Command {
 	 */
 	protected function getArguments()
 	{
-		return array(
-			array('teamId', InputArgument::REQUIRED, 'TOR'),
-		);
+		return [
+			['type', InputArgument::REQUIRED]
+		];
 	}
 
 	/**

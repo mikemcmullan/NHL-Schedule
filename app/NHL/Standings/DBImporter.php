@@ -1,10 +1,10 @@
 <?php
 
-namespace NHL\Schedule;
+namespace NHL\Standings;
 
 use NHL\Storage\Match\MatchRepository;
 
-class ScheduleDBImporter implements ScheduleImporter {
+class DBImporter implements ScheduleImporter {
 
     /**
      * @var ScheduleImporter

@@ -59,9 +59,11 @@ class EloquentScoreRepository implements ScoreRepository {
         foreach($score as $s)
         {
             $this->model->where('match_id', '=', $matchId)
-                ->where('team_id', '=', $s->getTeamId())
                 ->update([
-                    'score' => $s->getScore(),
+                    'home_score' => $s->getHomeScore(),
+                    'home_sog'   => $s->getHomeSog(),
+                    'away_score' => $s->getAwayScore(),
+                    'away_sog'   => $s->getAwaySog(),
                     'shootout' => $s->getShootout(),
                     'overtime' => $s->getOvertime(),
                     'game_status' => $s->getGameStatus(),

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Console\Command;
+use NHL\DataCollector\LiveMatchUpdateProvider;
 use NHL\Scoreboard\ScoreboardImporter;
 use NHL\Storage\Match\MatchRepository;
 use Symfony\Component\Console\Input\InputOption;
@@ -13,7 +14,7 @@ class UpdateScoreboardCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'nhl:updateScoreboard';
+	protected $name = 'nhl:update-scoreboard';
 
 	/**
 	 * The console command description.
@@ -23,27 +24,26 @@ class UpdateScoreboardCommand extends Command {
 	protected $description = 'Update scoreboard for today.';
 
 	/**
-	 * @var ScoreboardImporter
-	 */
-	private $scoreboardImporter;
-
-	/**
 	 * @var MatchRepository
 	 */
 	private $matchRepo;
 
 	/**
+	 * @var LiveMatchUpdateProvider
+	 */
+	private $liveMatchUpdateProvider;
+
+	/**
 	 * Create a new command instance.
 	 *
-	 * @param ScoreboardImporter $scoreboardImporter
 	 * @param MatchRepository $matchRepo
-	 * @return \UpdateScoreboardCommand
+	 * @param LiveMatchUpdateProvider $liveMatchUpdateProvider
 	 */
-	public function __construct(ScoreboardImporter $scoreboardImporter, MatchRepository $matchRepo)
+	public function __construct(MatchRepository $matchRepo, LiveMatchUpdateProvider $liveMatchUpdateProvider)
 	{
 		parent::__construct();
-		$this->scoreboardImporter = $scoreboardImporter;
 		$this->matchRepo = $matchRepo;
+		$this->liveMatchUpdateProvider = $liveMatchUpdateProvider;
 	}
 
 	/**
@@ -59,7 +59,15 @@ class UpdateScoreboardCommand extends Command {
 
 			if ( ! $inProgress->isEmpty())
 			{
-				$this->scoreboardImporter->byDay($inProgress->first()->date);
+				$date = $inProgress->first()->date;
+
+				$this->liveMatchUpdateProvider->setDate($date);
+				$this->liveMatchUpdateProvider->addConsumer(
+					App::make(NHL\DataCollector\Consumers\LiveMatchUpdateConsumer::class, ['date' => $date])
+				);
+
+				$this->liveMatchUpdateProvider->execute();
+
 				$this->info('Scoreboard updated.');
 			}
 			else

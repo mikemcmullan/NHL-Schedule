@@ -8,11 +8,11 @@ class Match extends Eloquent {
     /**
      * @var array
      */
-    protected $fillable = ['uid', 'team_id', 'date', 'home_team', 'away_team', 'tv_info', 'results'];
+    protected $fillable = ['team_id', 'date', 'home_team', 'away_team', 'tv_info', 'results'];
 
     public function scores()
     {
-        return $this->hasMany('Score');
+        return $this->hasOne('Score');
     }
 
     /**

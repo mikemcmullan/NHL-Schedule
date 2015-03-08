@@ -83,10 +83,7 @@ function presentScores(Match $match)
 {
     $template = '%s (%d) - %s (%s)';
 
-    $team1 = $match['scores']->first();
-    $team2 = $match['scores']->last();
-
-    return sprintf($template, $team1->team_id, $team1->score, $team2->team_id, $team2->score);
+    return sprintf($template, $match['home_team'], $match['scores']['home_score'], $match['away_team'], $match['scores']['away_score']);
 }
 
 /**
@@ -95,12 +92,12 @@ function presentScores(Match $match)
  */
 function presentTime(Match $match)
 {
-    if ( ! hasMatchStarted($match['date']) ||  $match['scores']->isEmpty())
+    if ( ! hasMatchStarted($match['date']) ||  ! $match['scores'])
     {
         return $match['date']->format('g:i A');
     }
 
-    $score = $match['scores']->first();
+    $score = $match['scores'];
 
     if ($score->game_status === 'progress')
     {
@@ -130,4 +127,15 @@ function presentTime(Match $match)
 function hasMatchStarted(Carbon $date)
 {
     return $date->diffInMinutes(Config::get('nhl.currentDateTime'), false) >= 0;
+}
+
+/**
+ * Removed HTML comments from a string.
+ *
+ * @param $string
+ * @return string
+ */
+function stripHTMLComments($string)
+{
+    return trim(preg_replace('/<!--(.|\s)*?-->/', '', $string));
 }

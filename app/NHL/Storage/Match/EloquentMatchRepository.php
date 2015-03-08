@@ -114,9 +114,9 @@ class EloquentMatchRepository implements MatchRepository {
         {
             return $today->filter(function($value) use($date)
             {
-                $isGameInProgress = $date > $value->date && $date->diffInMinutes($value->date) <= 180;
+                $isGameInProgress = $date > $value['date'] && $date->diffInMinutes($value['date']) <= 180;
 
-                if ( ! $isGameInProgress && ! $value->scores->isEmpty() && $value->scores->first()->game_status === 'progress')
+                if ( ! $isGameInProgress && $value['scores'] && $value['scores']['game_status'] === 'progress')
                 {
                     return true;
                 }

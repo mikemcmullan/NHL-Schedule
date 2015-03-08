@@ -17,6 +17,14 @@ Route::get('/team/{id}/schedule', [
     'uses'  => 'TeamController@schedule'
 ]);
 
+Route::get('/standings/{type?}', [
+    'as'    => 'standings_path',
+    'uses'  => function($type = 'WC')
+    {
+        return App::make('NHL\Standings\Importer')->all($type);
+    }
+]);
+
 Route::pattern('date', '[\d]{4}-[\d]{2}-[\d]{2}');
 
 Route::bind('date', function($value, $route)

@@ -14,7 +14,7 @@ $config = [
     | you do not want to use the cache.
     |
     */
-    'scheduleCacheLength' => false,
+    'scheduleCacheLength' => Carbon::now()->addDay(), //false,
 
     /*
     |--------------------------------------------------------------------------
@@ -26,6 +26,14 @@ $config = [
     |
     */
     'htmlTeamSeasonScheduleUrl' => 'http://www.nhl.com/ice/schedulebyseason.htm?season=20142015&gameType=2&team=%s&network=&venue=',
+
+    /*
+    |--------------------------------------------------------------------------
+    | HTML Standings Url
+    |--------------------------------------------------------------------------
+    |
+    */
+    'htmlStandingsUrl' => 'http://www.nhl.com/ice/standings.htm?season=20142015&type=%s',
 
     /*
     |--------------------------------------------------------------------------

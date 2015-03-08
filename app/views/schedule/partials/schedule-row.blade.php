@@ -33,7 +33,7 @@
     @endif
 
     @if (array_search('results', $columns) !== false)
-        @if ( ! $match['scores']->isEmpty() && hasMatchStarted($match['date']))
+        @if ($match['scores'] && hasMatchStarted($match['date']))
         <div class="results"><span>{{ presentScores($match) }}</span></div>
         @else
         <div class="results"><span>{{ $match['tv_info'] }}</span></div>

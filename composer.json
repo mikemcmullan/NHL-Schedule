@@ -17,7 +17,7 @@
             "NHL\\": "app/NHL/"
         },
         "files": [
-        	"app/NHL/Schedule/helpers.php"
+        	"app/NHL/helpers.php"
         ],
 		"classmap": [
 			"app/commands",

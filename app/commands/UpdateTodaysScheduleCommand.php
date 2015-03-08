@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Console\Command;
-use NHL\Schedule\ScheduleImporter;
+use NHL\DataCollector\ScheduleProvider;
+use NHL\DataCollector\Consumers\ScheduleDatabaseConsumer;
 use NHL\Storage\Match\MatchRepository;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -13,7 +14,7 @@ class UpdateTodaysScheduleCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'nhl:updateTodaysSchedule';
+	protected $name = 'nhl:update-todays-schedule';
 
 	/**
 	 * The console command description.
@@ -23,27 +24,24 @@ class UpdateTodaysScheduleCommand extends Command {
 	protected $description = 'Update the schedule for teams playing today.';
 
 	/**
-	 * @var ScheduleImporter
-	 */
-	private $scheduleImporter;
-
-	/**
 	 * @var MatchRepository
 	 */
-	private $match;
+	private $matchRepo;
+
+	/**
+	 * @var ScheduleProvider
+	 */
+	private $scheduleProvider;
 
 	/**
 	 * Create a new command instance.
 	 *
-	 * @param ScheduleImporter $scheduleImporter
-	 * @param MatchRepository $match
-	 * @return \UpdateTodaysSchedule
+	 * @param MatchRepository $matchRepo
 	 */
-	public function __construct(ScheduleImporter $scheduleImporter, MatchRepository $match)
+	public function __construct(MatchRepository $matchRepo)
 	{
 		parent::__construct();
-		$this->scheduleImporter = $scheduleImporter;
-		$this->match = $match;
+		$this->matchRepo = $matchRepo;
 	}
 
 	/**
@@ -53,13 +51,19 @@ class UpdateTodaysScheduleCommand extends Command {
 	 */
 	public function fire()
 	{
-		$todayMatches = $this->match->today();
+		$todayMatches = $this->matchRepo->today();
 
 		if ( ! $todayMatches->isEmpty())
 		{
 			$todayMatches->each(function($item)
 			{
-				$this->scheduleImporter->bySeason($item->home_team);
+				$this->scheduleProvider = App::make(ScheduleProvider::class);
+				$this->scheduleProvider->setTeam($item['home_team']);
+				$this->scheduleProvider->addConsumer(
+					App::make(ScheduleDatabaseConsumer::class, ['team' => $item['home_team']])
+				);
+				$this->scheduleProvider->execute();
+
 				$this->info($item->home_team . ' / ' . $item->away_team . ' Schedule has been updated.');
 			});
 		}

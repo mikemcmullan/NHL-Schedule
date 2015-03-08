@@ -1,15 +1,14 @@
 <?php
 
-namespace NHL\Schedule\HTML;
+namespace NHL\Standings\HTML;
 
-use NHL\Schedule\ScheduleImporter as ScheduleImporterInterface;
+use NHL\Standings\Importer as ImporterInterface;
 use NHL\Common\FileDownloader;
-use NHL\Exceptions\NonExistentTeamException;
 use PHPHtmlParser\Dom;
 use Sunra\PhpSimple\HtmlDomParser;
 use Illuminate\Config\Repository as ConfigRepository;
 
-class ScheduleImporter implements ScheduleImporterInterface {
+class Importer implements ImporterInterface {
 
     /**
      * @var Dom
@@ -39,22 +38,15 @@ class ScheduleImporter implements ScheduleImporterInterface {
     }
 
     /**
-     * Import the entire season schedule for a particular team.
+     * Import the current standings.
      *
-     * @param $teamId
-     * @throws NonExistentTeamException
+     * @param $type
      * @return array
      */
-    public function bySeason($teamId)
+    public function all($type)
     {
-        // Make sure the team exists.
-        if ( ! $this->config->has("nhl.teams.{$teamId}"))
-        {
-            throw new NonExistentTeamException;
-        }
-
         // Download the schedule and return it as a string.
-        $htmlString = $this->fileDownloader->get(sprintf($this->config->get('nhl.htmlTeamSeasonScheduleUrl'), $teamId));
+        $htmlString = $this->fileDownloader->get(sprintf($this->config->get('nhl.htmlStandingsUrl'), $type));
 
         return $this->parse($htmlString);
     }
@@ -71,11 +63,8 @@ class ScheduleImporter implements ScheduleImporterInterface {
         $dom = HtmlDomParser::str_get_html($htmlString);
 
         // Find the schedule table.
-        $matchesTable = $dom->find('.schedTbl tbody tr');
+        $standingsTable = $dom->find('table.standings');
 
-        // Remove the table header.
-        array_shift($matchesTable);
-
-        return $matchesTable;
+        return $standingsTable;
     }
 }
