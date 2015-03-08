@@ -121,9 +121,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-
-		'NHL\Schedule\ScheduleServiceProvider',
-		'NHL\Scoreboard\ScoreboardServiceProvider',
+		
         'NHL\Storage\StorageServiceProvider',
 		'NHL\Standings\StandingsServiceProvider',
 		'NHL\Team\TeamServiceProvider',
