@@ -1,8 +1,6 @@
 <?php
 
 use NHL\Exceptions\NonExistentTeamException;
-use NHL\Storage\Match\MatchRepository;
-use NHL\Schedule\ScheduleSorter;
 
 class TeamController extends BaseController {
 
