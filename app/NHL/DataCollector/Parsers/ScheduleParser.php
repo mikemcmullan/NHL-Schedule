@@ -48,8 +48,7 @@ class ScheduleParser implements Parser {
 		}
 
 		$date = head($match->find('.date .skedStartDateSite'))->innertext;
-		$time = head($match->find('.time .skedStartTimeEST'))->innertext;
-		$time = str_replace(' ET', '', $time);
+		$time = $this->getTime(head($match->find('.time')));
 
 		$info = stripHTMLComments(head($match->find('.tvInfo'))->innertext);
 
@@ -79,7 +78,35 @@ class ScheduleParser implements Parser {
 	 */
 	private function createDate($date, $time)
 	{
-		return Carbon::parse($date . ' ' . $time);
+		try {
+			return Carbon::parse($date . ' ' . $time);
+		}
+		catch(\Exception $e)
+		{
+			return Carbon::parse($date . ' 11:59 PM');
+		}
+	}
+
+	/**
+	 * Figure out the time for a match. It can either ne
+	 * a real time or TBD.
+	 *
+	 * @param \simple_html_dom_node $time
+	 *
+	 * @return mixed
+	 */
+	private function getTime(\simple_html_dom_node $time)
+	{
+		$estTime = $time->find('.skedStartTimeEST');
+
+		if ( ! empty($estTime))
+		{
+			$time = head($estTime);
+		}
+
+		$time = stripHTMLComments($time->innertext);
+
+		return str_replace(' ET', '', $time);
 	}
 
 	/**
