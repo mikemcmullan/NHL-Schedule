@@ -25,7 +25,7 @@ $config = [
     | a teams id (ex. TOR => Toronto Maple Leafs).
     |
     */
-    'htmlTeamSeasonScheduleUrl' => 'http://www.nhl.com/ice/schedulebyseason.htm?season=20142015&gameType=2&team=%s&network=&venue=',
+    'htmlTeamSeasonScheduleUrl' => 'http://www.nhl.com/ice/schedulebyseason.htm?season=20142015&gameType=3&team=%s&network=&venue=',
 
     /*
     |--------------------------------------------------------------------------
