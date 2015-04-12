@@ -92,6 +92,11 @@ function presentScores(Match $match)
  */
 function presentTime(Match $match)
 {
+    if ($match['date']->toTimeString() === '23:59:00')
+    {
+        return 'TBD *';
+    }
+
     if ( ! hasMatchStarted($match['date']) ||  ! $match['scores'])
     {
         return $match['date']->format('g:i A');
