@@ -8,6 +8,19 @@ use NHL\DataCollector\Contracts\Parser;
 class LiveMatchUpdateParser implements Parser {
 
 	/**
+	 * @var Repository
+	 */
+	private $config;
+
+	/**
+	 * @param Repository $config
+	 */
+	public function __construct(Repository $config)
+	{
+		$this->config = $config;
+	}
+
+	/**
 	 * @param $data
 	 *
 	 * @return mixed

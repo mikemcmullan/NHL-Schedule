@@ -59,7 +59,8 @@ class ScheduleDatabaseConsumer implements Consumer {
 		$m = [
 			'date'          => $match['date'],
 			'home_team'     => $match['home_team'],
-			'away_team'     => $match['away_team']
+			'away_team'     => $match['away_team'],
+			'season'        => $match['season']
 		];
 
 		$match['tv_info'] && $m['tv_info'] = $match['tv_info'];

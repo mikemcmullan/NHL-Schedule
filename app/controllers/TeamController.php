@@ -23,7 +23,7 @@ class TeamController extends BaseController {
     {
         try
         {
-            $team = Team::make($teamID);
+            $team = Team::make($teamID, 2015);
 
             $sortedSchedule = $team->schedule(true);
             $colours = $team->colours();

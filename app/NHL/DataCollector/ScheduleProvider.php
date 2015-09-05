@@ -59,6 +59,6 @@ class ScheduleProvider extends AbstractProvider {
 	 */
 	public function getParser()
 	{
-		return new Parsers\ScheduleParser;
+		return new Parsers\ScheduleParser($this->config);
 	}
 }

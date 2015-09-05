@@ -24,14 +24,14 @@ class Factory {
         $this->container = $container;
     }
 
-    public function make($teamId = null)
+    public function make($teamId = null, $season)
     {
         if ( ! $team = $this->config->get("nhl.teams.{$teamId}"))
         {
             throw new NonExistentTeamException;
         }
 
-        $team = new Team($teamId, $team['long'], $team['short'], $team['colours']);
+        $team = new Team($teamId, $season, $team['long'], $team['short'], $team['colours']);
         $team->setContainer($this->container);
 
         return $team;

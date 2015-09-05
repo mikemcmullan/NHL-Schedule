@@ -32,17 +32,24 @@ class Team
     private $colours;
 
     /**
+     * @var int
+     */
+    private $season;
+
+    /**
      * @param $teamId
+     * @param $season
      * @param $teamLongName
      * @param $teamShortName
      * @param array $colours
      */
-    public function __construct($teamId, $teamLongName, $teamShortName, array $colours)
+    public function __construct($teamId, $season, $teamLongName, $teamShortName, array $colours)
     {
         $this->teamId = $teamId;
         $this->teamLongName = $teamLongName;
         $this->teamShortName = $teamShortName;
         $this->colours = $colours;
+        $this->season = $season;
     }
 
     /**
@@ -86,6 +93,14 @@ class Team
     }
 
     /**
+     * @return int
+     */
+    public function getSeason()
+    {
+        return $this->season;
+    }
+
+    /**
      *
      */
     public function colours()
@@ -107,7 +122,10 @@ class Team
      */
     public function schedule($sorted = false)
     {
-        return $this->container->make(__NAMESPACE__ . '\Schedule')->setTeam($this)->get($sorted);
+        return $this->container->make(__NAMESPACE__ . '\Schedule')
+            ->setTeam($this)
+            ->setSeason($this->season)
+            ->get($sorted);
     }
 
 }

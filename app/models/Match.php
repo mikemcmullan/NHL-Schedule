@@ -8,7 +8,7 @@ class Match extends Eloquent {
     /**
      * @var array
      */
-    protected $fillable = ['team_id', 'date', 'home_team', 'away_team', 'tv_info', 'results'];
+    protected $fillable = ['season', 'team_id', 'date', 'home_team', 'away_team', 'tv_info', 'results'];
 
     public function scores()
     {

@@ -3,11 +3,25 @@
 namespace NHL\DataCollector\Parsers;
 
 use Carbon\Carbon;
+use Illuminate\Config\Repository;
 use Illuminate\Database\Eloquent\Collection;
 use NHL\DataCollector\Contracts\Parser;
 use Sunra\PhpSimple\HtmlDomParser;
 
 class ScheduleParser implements Parser {
+
+	/**
+	 * @var Repository
+	 */
+	private $config;
+
+	/**
+	 * @param Repository $config
+	 */
+	public function __construct(Repository $config)
+	{
+		$this->config = $config;
+	}
 
 	/**
 	 * Parse the data.
@@ -62,6 +76,7 @@ class ScheduleParser implements Parser {
 
 		return new \Match([
 			'date'        => $this->createDate($date, $time),
+			'season'      => $this->config->get('nhl.season'),
 			'home_team'   => $teams['home'],
 			'away_team'   => $teams['away'],
 			'tv_info'     => $tvInfo,
@@ -74,7 +89,7 @@ class ScheduleParser implements Parser {
 	 *
 	 * @param  string $date
 	 * @param  string $time
-	 * @return object
+	 * @return Carbon
 	 */
 	private function createDate($date, $time)
 	{

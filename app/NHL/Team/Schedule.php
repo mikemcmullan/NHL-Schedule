@@ -23,6 +23,11 @@ class Schedule {
     private $team;
 
     /**
+     * @var int
+     */
+    private $season = 0;
+
+    /**
      * @param MatchRepository $matchRepo
      * @param ScheduleSorter $scheduleSorter
      */
@@ -39,6 +44,13 @@ class Schedule {
     public function setTeam(Team $team)
     {
         $this->team = $team;
+
+        return $this;
+    }
+
+    public function setSeason($season)
+    {
+        $this->season = $season;
 
         return $this;
     }
@@ -62,7 +74,7 @@ class Schedule {
      */
     private function notSorted()
     {
-        return $this->matchRepo->byTeam($this->team->getTeamId());
+        return $this->matchRepo->byTeam($this->team->getTeamId(), $this->season);
     }
 
     /**
@@ -70,7 +82,7 @@ class Schedule {
      */
     private function sorted()
     {
-        $schedule = $this->matchRepo->byTeam($this->team->getTeamId());
+        $schedule = $this->matchRepo->byTeam($this->team->getTeamId(), $this->season);
 
         return $this->scheduleSorter->sort($schedule);
     }

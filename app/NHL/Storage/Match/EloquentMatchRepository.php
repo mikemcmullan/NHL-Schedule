@@ -73,10 +73,13 @@ class EloquentMatchRepository implements MatchRepository {
      * @return mixed
      * @throws NonExistentTeamException
      */
-    public function byTeam($teamID)
+    public function byTeam($teamID, $season)
     {
-        $matches = $this->model->with('scores')->where('home_team', '=', $teamID)
+        $matches = $this->model->with('scores')
+            ->where('season', '=', $season)
+            ->where('home_team', '=', $teamID)
             ->orWhere('away_team', '=', $teamID)
+            ->where('season', '=', $season)
             ->orderBy('date')->get();
 
         if ($matches->isEmpty())
