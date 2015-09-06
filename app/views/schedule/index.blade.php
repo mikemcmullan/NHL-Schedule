@@ -6,7 +6,7 @@ NHL {{ $teamName }} Schedule &#8250; 2015 - 2016 NHL Schedule Viewer
 
 @section('content')
 <header>
-    <h1>{{ $teamName }} 2014 - 2015 Schedule</h1>
+    <h1>{{ $teamName }} 2015 - 2016 Schedule</h1>
 </header>
 
 <table>
