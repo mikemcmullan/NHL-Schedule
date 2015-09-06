@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('pageTitle')
-Select Your Team &#8250; 2014 - 2015 NHL Schedule Viewer
+Select Your Team &#8250; 2015 - 2016 NHL Schedule Viewer
 @stop
 
 @section('content')
 <header class="page-header">
-    <h1>{{ link_to_route('home_path', '2014 - 2015 NHL Schedule Viewer') }}</h1>
+    <h1>{{ link_to_route('home_path', '2015 - 2016 NHL Schedule Viewer') }}</h1>
     <h2>Matches for {{ $date or 'Today' }}</h2>
 </header>
 
